@@ -497,12 +497,22 @@ export const getRandomHero = (): Hero => {
   return heroes[Math.floor(Math.random() * heroes.length)];
 };
 
-export const getDailyHero = (): Hero => {
+export const getDailyHero = (modeSeed: string = ""): Hero => {
   const today = new Date();
   const seed =
     today.getFullYear() * 10000 +
     (today.getMonth() + 1) * 100 +
-    today.getDate();
+    today.getDate() +
+    hashString(modeSeed);
+
+  function hashString(str: string) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      hash = ((hash << 5) - hash) + str.charCodeAt(i);
+      hash |= 0;
+    }
+    return hash;
+  }
 
   const seededRandom = () => {
     const x = Math.sin(seed) * 10000;

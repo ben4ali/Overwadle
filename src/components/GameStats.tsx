@@ -1,6 +1,12 @@
 import { useGame } from '../contexts/GameContext';
+import { useEffect, useState } from 'react';
 
-const GameStats = () => {
+interface GameStatsProps {
+  showWinMessage?: boolean;
+  isAnimating?: boolean;
+}
+
+const GameStats = ({ showWinMessage = true, isAnimating = false }: GameStatsProps) => {
   const { gameWon, targetHero } = useGame();
   
   const now = new Date();
@@ -13,6 +19,21 @@ const GameStats = () => {
   const hours = Math.floor(timeUntilReset / (1000 * 60 * 60));
   const minutes = Math.floor((timeUntilReset % (1000 * 60 * 60)) / (1000 * 60));
   
+  const [showDelayedWinCard, setShowDelayedWinCard] = useState(false);
+
+  useEffect(() => {
+    let timeout: NodeJS.Timeout | undefined;
+    if (showWinMessage && !isAnimating && gameWon) {
+      // Add a small delay to ensure animation is finished
+      timeout = setTimeout(() => setShowDelayedWinCard(true), 3100);
+    } else {
+      setShowDelayedWinCard(false);
+    }
+    return () => {
+      if (timeout) clearTimeout(timeout);
+    };
+  }, [showWinMessage, isAnimating, gameWon]);
+
   return (
     <div className="flex flex-col items-center justify-center mt-4 md:mt-6 p-3 md:p-4 border border-muted rounded-md bg-card/50">
       <div className="text-lg">
@@ -22,10 +43,11 @@ const GameStats = () => {
         Next hero in: {hours}h {minutes}m
       </div>
       
-      {(gameWon) && targetHero && (
+      {/* Only show win card after a short delay, after animation is finished */}
+      {showDelayedWinCard && gameWon && targetHero && (
         <div className="mt-3 md:mt-4 p-3 md:p-4 rounded-md bg-card animate-fade-in">
           <p className="text-base md:text-lg font-semibold mb-2">
-            {gameWon ? '🎉 You won!' : '😔 Game Over'}
+            🎉 You won!
           </p>
           <div className="flex items-center justify-center space-x-3 md:space-x-4">
             <img

@@ -3,7 +3,11 @@ import { heroes } from '../data/heroes';
 import type { Hero } from '../data/heroes';
 import { useGame } from '../contexts/GameContext';
 
-const HeroInput = () => {
+interface HeroInputProps {
+  disabled?: boolean;
+}
+
+const HeroInput = ({ disabled = false }: HeroInputProps) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [showDropdown, setShowDropdown] = useState(false);
   const [filteredHeroes, setFilteredHeroes] = useState<Hero[]>([]);
@@ -50,6 +54,7 @@ const HeroInput = () => {
   }, []);
 
   const handleHeroSelect = (hero: Hero) => {
+    if (disabled) return;
     const alreadyGuessed = guesses.some((guess) => guess.hero.id === hero.id);
     if (alreadyGuessed) {
       alert("You've already guessed this hero!");
@@ -59,7 +64,7 @@ const HeroInput = () => {
     setSearchTerm('');
     setShowDropdown(false);
   };
-  const isGameActive = !gameWon && !isAnimating;
+  const isGameActive = !gameWon && !isAnimating && !disabled;
 
   return (
     <div className="w-full max-w-md relative">
@@ -70,16 +75,18 @@ const HeroInput = () => {
           placeholder={
             isGameActive
               ? "Enter a hero name..."
-              : gameWon && !isAnimating
+              : gameWon
               ? "You won!"
               : isAnimating
               ? "Wait for animation..."
+              : disabled
+              ? "No more guesses"
               : "No more guesses"
           }
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           onClick={() => setShowDropdown(true)}
-          className="hero-input w-full text-sm md:text-base py-1 md:py-2"
+          className={`hero-input w-full text-sm md:text-base py-1 md:py-2 ${gameWon ? "text-green-400 font-bold" : ""}`}
           disabled={!isGameActive}
         />
       </div>

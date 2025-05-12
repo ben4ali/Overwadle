@@ -11,6 +11,8 @@ const GuessesDisplay = () => {
   const { guesses, gameWon, targetHero, setGameWon } = useGame();
   const guessesContainerRef = useRef<HTMLDivElement>(null);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [showWinMessage, setShowWinMessage] = useState(false);
+  const prevGuessesLengthRef = useRef(-1);
 
   const columns = [
     { key: 'hero', label: 'Hero' },
@@ -22,54 +24,76 @@ const GuessesDisplay = () => {
   ];
   
   useEffect(() => {
-    if (guesses.length && guessesContainerRef.current) {
-      setIsAnimating(true);
-      const lastGuessIndex = guesses.length - 1;
-      const cells = guessesContainerRef.current.querySelectorAll(`.guess-${lastGuessIndex} .result-cell`);
-      const lastGuess = guesses[lastGuessIndex];
-      const isCorrectGuess = lastGuess?.result.name === true;
-
-      gsap.set(cells, { opacity: 0, y: 10 });
-
-      gsap.to(cells, {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        ease: "power2.out",
-        stagger: 0.7,
-        onStart: () => {
-          window.dispatchEvent(new CustomEvent('guesses-animating', { detail: true }));
-        },
-        onComplete: () => {
-          setIsAnimating(false);
-          window.dispatchEvent(new CustomEvent('guesses-animating', { detail: false }));
-          
-          if (isCorrectGuess) {
-            setGameWon(true);
-          }
-        },
-      });
-    } else {
-      setIsAnimating(false);
-      window.dispatchEvent(new CustomEvent('guesses-animating', { detail: false }));
+    prevGuessesLengthRef.current = guesses.length;
+    if (gameWon) {
+      setShowWinMessage(true);
     }
-  }, [guesses, setGameWon]);
+  }, [gameWon, guesses.length]);
+
+  useEffect(() => {
+    const currentGuessesLength = guesses.length;
+    prevGuessesLengthRef.current = currentGuessesLength;
+   
+    if (currentGuessesLength > 0) {
+ 
+      const lastGuess = guesses[currentGuessesLength - 1];
+      const isCorrectGuess = lastGuess?.result.name === true;
+      
+      setIsAnimating(true);
+      setShowWinMessage(false);
+      window.dispatchEvent(new CustomEvent('guesses-animating', { detail: true }));
+      
+        const newestGuessRow = guessesContainerRef.current?.querySelector('.guess-0');
+        if (!newestGuessRow) {
+          console.error('Animation target not found');
+          setIsAnimating(false);
+          return;
+        }
+        
+        const cells = newestGuessRow.querySelectorAll('.result-cell');
+        
+
+        gsap.set(cells, { opacity: 0, y: 10 });
+        
+        gsap.to(cells, {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "power2.out",
+          stagger: {
+            each: 0.5,
+            from: "start",
+            ease: "power1.in"
+          },
+          onComplete: () => {
+            setIsAnimating(false);
+            window.dispatchEvent(new CustomEvent('guesses-animating', { detail: false }));
+            
+            if (isCorrectGuess) {
+              setGameWon(true);
+              setShowWinMessage(true);
+            } else {
+              setShowWinMessage(false);
+            }
+          },
+        });
+    }
+  }, [guesses]);
 
   const getResultClass = (result: boolean | 'partial') => {
     if (result === true) return 'bg-green-600';
     if (result === 'partial') return 'bg-yellow-500';
     return 'bg-red-600';
   };
-  
+
   return (
     <div className="w-full overflow-x-auto pb-4">
-      {gameWon && !isAnimating && (
-        <div className="text-center my-6">
+      {showWinMessage && !isAnimating && (
+        <div className="text-center my-6 animate-fade-in">
           <span className="text-3xl font-bold text-green-400 animate-bounce mb-3">🎉 You won!</span>
         </div>
       )}
       
-      {/* Table header */}
       <div className="grid grid-cols-6 gap-1 md:gap-5 mb-2 items-center justify-between w-full max-w-4xl mx-auto min-w-[600px]">
         {columns.map((column) => (
           <div 
@@ -81,10 +105,12 @@ const GuessesDisplay = () => {
         ))}
       </div>
 
-      {/* Guesses rows */}
       <div className="space-y-2 w-full max-w-4xl mx-auto min-w-[600px]" ref={guessesContainerRef}>
         {[...guesses].reverse().map((guess, index) => (
-          <div key={guesses.length - 1 - index} className={`grid grid-cols-6 gap-1 md:gap-5 guess-${guesses.length - 1 - index} w-full`}>
+          <div 
+            key={guesses.length - 1 - index} 
+            className={`grid grid-cols-6 gap-1 md:gap-5 guess-${index} w-full`}
+          >
             <div className="result-cell md:h-[8.2rem] h-[6rem]">
               <div className="flex flex-col items-center">
                 <img

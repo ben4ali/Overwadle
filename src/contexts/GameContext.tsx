@@ -17,6 +17,13 @@ export interface Guess {
   };
 }
 
+interface GameModeState {
+  targetHero: Hero | null;
+  guesses: Guess[];
+  gameWon: boolean;
+  lastReset: Date;
+}
+
 interface GameContextType {
   currentMode: GameMode;
   setCurrentMode: (mode: GameMode) => void;
@@ -34,55 +41,62 @@ const GameContext = createContext<GameContextType | undefined>(undefined);
 
 export const GameProvider = ({ children }: { children: React.ReactNode }) => {
   const [currentMode, setCurrentMode] = useState<GameMode>('classic');
-  const [targetHero, setTargetHero] = useState<Hero | null>(null);
-  const [guesses, setGuesses] = useState<Guess[]>([]);
-  const [gameWon, setGameWon] = useState(false);
-  const [lastReset, setLastReset] = useState(new Date());
+  const [gameModeStates, setGameModeStates] = useState<Record<GameMode, GameModeState>>({
+    classic: { targetHero: null, guesses: [], gameWon: false, lastReset: new Date() },
+    ability: { targetHero: null, guesses: [], gameWon: false, lastReset: new Date() },
+    quote: { targetHero: null, guesses: [], gameWon: false, lastReset: new Date() },
+    emoji: { targetHero: null, guesses: [], gameWon: false, lastReset: new Date() },
+    splash: { targetHero: null, guesses: [], gameWon: false, lastReset: new Date() },
+  });
 
+  const targetHero = gameModeStates[currentMode].targetHero;
+  const guesses = gameModeStates[currentMode].guesses;
+  const gameWon = gameModeStates[currentMode].gameWon;
+  const lastReset = gameModeStates[currentMode].lastReset;
+  
+  const setGameWon = (won: boolean) => {
+    setGameModeStates(prev => ({
+      ...prev,
+      [currentMode]: { ...prev[currentMode], gameWon: won }
+    }));
+  };
   useEffect(() => {
     const savedState = secureRetrieve('overwatchHeroGuessGame');
     const today = new Date().toDateString();
     
-    if (savedState) {
-      if (savedState.date === today) {
-        setTargetHero(savedState.targetHero);
-        setGuesses(savedState.guesses || []);
-        setGameWon(savedState.gameWon || false);
-        setLastReset(new Date(savedState.lastReset || new Date()));
-        setCurrentMode(savedState.currentMode || 'classic');
-        return;
+    if (savedState && savedState.date === today && savedState.gameModeStates) {
+      setGameModeStates(savedState.gameModeStates);
+      if (savedState.currentMode) {
+        setCurrentMode(savedState.currentMode);
       }
+      return;
     }
     
-    const newTargetHero = getDailyHero();
-    setTargetHero(newTargetHero);
-    setGuesses([]);
-    setGameWon(false);
-    setLastReset(new Date());
+    const initialCurrentMode = currentMode;
+    const newGameModeStates: Record<GameMode, GameModeState> = {
+      classic: { targetHero: getDailyHero('classic'), guesses: [], gameWon: false, lastReset: new Date() },
+      ability: { targetHero: getDailyHero('ability'), guesses: [], gameWon: false, lastReset: new Date() },
+      quote: { targetHero: getDailyHero('quote'), guesses: [], gameWon: false, lastReset: new Date() },
+      emoji: { targetHero: getDailyHero('emoji'), guesses: [], gameWon: false, lastReset: new Date() },
+      splash: { targetHero: getDailyHero('splash'), guesses: [], gameWon: false, lastReset: new Date() }
+    };
+    
+    setGameModeStates(newGameModeStates);
     
     secureStore('overwatchHeroGuessGame', {
-      targetHero: newTargetHero,
-      guesses: [],
-      gameWon: false,
-      lastReset: new Date(),
+      gameModeStates: newGameModeStates,
       date: today,
-      currentMode: currentMode
+      currentMode: initialCurrentMode
     });
-  }, [currentMode]);
-  
+  }, []);
+
   useEffect(() => {
-    if (targetHero) {
-      secureStore('overwatchHeroGuessGame', {
-        targetHero,
-        guesses,
-        gameWon,
-        lastReset,
-        date: new Date().toDateString(),
-        currentMode
-      });
-    }
-  }, [targetHero, guesses, gameWon, lastReset, currentMode]);
-  const addGuess = (hero: Hero) => {
+    secureStore('overwatchHeroGuessGame', {
+      gameModeStates,
+      date: new Date().toDateString(),
+      currentMode
+    });
+  }, [gameModeStates, currentMode]);  const addGuess = (hero: Hero) => {
     if (gameWon) return;
     
     const result = {
@@ -96,16 +110,32 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
     
     const newGuess: Guess = { hero, result };
     const newGuesses = [...guesses, newGuess];
-    setGuesses(newGuesses);
+    
+    // Check if this is a winning guess
+    const isCorrectGuess = hero.id === targetHero?.id;
+    
+    setGameModeStates(prev => ({
+      ...prev,
+      [currentMode]: { 
+        ...prev[currentMode], 
+        guesses: newGuesses,
+        gameWon: isCorrectGuess ? true : prev[currentMode].gameWon
+      }
+    }));
   };
-
   const resetGame = () => {
-    const newTargetHero = getDailyHero();
-    setTargetHero(newTargetHero);
-    setGuesses([]);
-    setGameWon(false);
-    setLastReset(new Date());
+    const newTargetHero = getDailyHero(currentMode);
+    setGameModeStates(prev => ({
+      ...prev,
+      [currentMode]: {
+        targetHero: newTargetHero,
+        guesses: [],
+        gameWon: false,
+        lastReset: new Date()
+      }
+    }));
   };
+  
   return (
     <GameContext.Provider value={{
       currentMode,

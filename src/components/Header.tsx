@@ -7,6 +7,7 @@ const Header = () => {
 
   const modes = [
     { id: 'classic', name: 'Classic' },
+    { id: 'quote', name: 'Quotes' },
   ];
 
   return (
@@ -40,7 +41,7 @@ const Header = () => {
                     : 'bg-white border-ow-blue text-ow-blue hover:bg-ow-blue hover:text-white'
                   }
                 `}
-                onClick={() => setCurrentMode(mode.id as 'classic')}
+                onClick={() => setCurrentMode(mode.id as 'classic' | 'quote')}
                 >
                 {mode.name}
                 </button>

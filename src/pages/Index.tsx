@@ -1,15 +1,17 @@
 import { GameProvider, useGame } from '../contexts/GameContext';
 import Header from '../components/Header';
 import ClassicMode from '../components/modes/ClassicMode';
+import QuotesMode from '../components/modes/QuotesMode';
 import overwatchBG  from '../assets/images/overwatch-bg.jpeg'
 
 const GameContent = () => {
   const { currentMode } = useGame();
-
   const renderGameMode = () => {
     switch (currentMode) {
       case 'classic':
         return <ClassicMode />;
+      case 'quote':
+        return <QuotesMode />;
       default:
         return <ClassicMode />;
     }
