@@ -8,10 +8,9 @@ import damageIcon from '../assets/images/Damage.svg';
 import supportIcon from '../assets/images/Support.svg';
 
 const GuessesDisplay = () => {
-  const { guesses, gameWon, targetHero } = useGame();
+  const { guesses, gameWon, targetHero, setGameWon } = useGame();
   const guessesContainerRef = useRef<HTMLDivElement>(null);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [showWin, setShowWin] = useState(false);
 
   const columns = [
     { key: 'hero', label: 'Hero' },
@@ -20,14 +19,13 @@ const GuessesDisplay = () => {
     { key: 'weaponType', label: 'Weapon' },
     { key: 'mobility', label: 'Mobility' },
     { key: 'releaseYear', label: 'Year' },
-  ];
-
-  useEffect(() => {
+  ];  useEffect(() => {
     if (guesses.length && guessesContainerRef.current) {
       setIsAnimating(true);
-      setShowWin(false);
       const lastGuessIndex = guesses.length - 1;
       const cells = guessesContainerRef.current.querySelectorAll(`.guess-${lastGuessIndex} .result-cell`);
+      const lastGuess = guesses[lastGuessIndex];
+      const isCorrectGuess = lastGuess?.result.name === true;
 
       gsap.set(cells, { opacity: 0, y: 10 });
 
@@ -43,25 +41,30 @@ const GuessesDisplay = () => {
         onComplete: () => {
           setIsAnimating(false);
           window.dispatchEvent(new CustomEvent('guesses-animating', { detail: false }));
-          if (gameWon) setShowWin(true);
+          
+          if (isCorrectGuess) {
+            setGameWon(true);
+          }
         },
       });
     } else {
       setIsAnimating(false);
-      setShowWin(false);
       window.dispatchEvent(new CustomEvent('guesses-animating', { detail: false }));
     }
-  }, [guesses.length, gameWon]);
+  }, [guesses, setGameWon]);
 
-  // Returns a color class based on the result: green for correct, yellow for partial, red for incorrect
   const getResultClass = (result: boolean | 'partial') => {
     if (result === true) return 'bg-green-600';
     if (result === 'partial') return 'bg-yellow-500';
     return 'bg-red-600';
   };
-
   return (
-    <div className="w-full mt-8">
+    <div className="w-full">
+          {gameWon && !isAnimating && (
+        <div className="text-center my-6">
+          <span className="text-3xl font-bold text-green-400 animate-bounce mb-3">🎉 You won!</span>
+        </div>
+      )}
       <div className="grid grid-cols-6 gap-5 mb-2 items-center justify-between w-full max-w-4xl mx-auto">
         {columns.map((column) => (
           <div key={column.key} className="font-semibold text-center w-full bg-[#1c1c34] text-white h-[3rem] flex items-center justify-center">
@@ -116,12 +119,6 @@ const GuessesDisplay = () => {
           </div>
         ))}
       </div>
-
-      {showWin && (
-        <div className="text-center mt-6">
-          <span className="text-3xl font-bold text-green-400 animate-bounce">🎉 You won!</span>
-        </div>
-      )}
 
       {guesses.length === 0 && (
         <div className="text-center p-6 border border-dashed border-muted rounded-md w-full max-w-4xl mx-auto">

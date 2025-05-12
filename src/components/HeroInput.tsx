@@ -11,7 +11,6 @@ const HeroInput = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Listen for animation state from GuessesDisplay
   const [isAnimating, setIsAnimating] = useState(false);
   useEffect(() => {
     const handler = (e: CustomEvent) => setIsAnimating(e.detail);
@@ -60,7 +59,6 @@ const HeroInput = () => {
     setSearchTerm('');
     setShowDropdown(false);
   };
-
   const isGameActive = !gameWon && !isAnimating;
 
   return (
@@ -72,7 +70,7 @@ const HeroInput = () => {
           placeholder={
             isGameActive
               ? "Enter a hero name..."
-              : gameWon
+              : gameWon && !isAnimating
               ? "You won!"
               : isAnimating
               ? "Wait for animation..."

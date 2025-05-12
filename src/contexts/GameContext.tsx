@@ -25,6 +25,7 @@ interface GameContextType {
   addGuess: (hero: Hero) => void;
   resetGame: () => void;
   gameWon: boolean;
+  setGameWon: (won: boolean) => void;
   remainingGuesses: number;
   lastReset: Date;
 }
@@ -43,7 +44,6 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
     const today = new Date().toDateString();
     
     if (savedState) {
-      // State is now securely retrieved and decrypted
       if (savedState.date === today) {
         setTargetHero(savedState.targetHero);
         setGuesses(savedState.guesses || []);
@@ -54,7 +54,6 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
       }
     }
     
-    // If no saved state or it's a new day, create new game
     const newTargetHero = getDailyHero();
     setTargetHero(newTargetHero);
     setGuesses([]);
@@ -69,7 +68,7 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
       date: today,
       currentMode: currentMode
     });
-  }, [currentMode]); // Added currentMode to dependency array
+  }, [currentMode]);
   
   useEffect(() => {
     if (targetHero) {
@@ -83,9 +82,7 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
       });
     }
   }, [targetHero, guesses, gameWon, lastReset, currentMode]);
-
   const addGuess = (hero: Hero) => {
-    // Only check if the game was already won
     if (gameWon) return;
     
     const result = {
@@ -100,10 +97,6 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
     const newGuess: Guess = { hero, result };
     const newGuesses = [...guesses, newGuess];
     setGuesses(newGuesses);
-    
-    if (result.name) {
-      setGameWon(true);
-    }
   };
 
   const resetGame = () => {
@@ -113,7 +106,6 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
     setGameWon(false);
     setLastReset(new Date());
   };
-
   return (
     <GameContext.Provider value={{
       currentMode,
@@ -123,6 +115,7 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
       addGuess,
       resetGame,
       gameWon,
+      setGameWon,
       remainingGuesses: 0,
       lastReset
     }}>

@@ -12,7 +12,7 @@ const SALT = 'overwadle-salt-value';
  * @param data Any JSON-serializable data to encrypt
  * @returns Encrypted string in base64 format
  */
-export function encrypt(data: any): string {
+export function encrypt(data: unknown): string {
   // Convert data to a JSON string
   const jsonString = JSON.stringify(data);
   
@@ -32,7 +32,7 @@ export function encrypt(data: any): string {
  * @param encryptedStr The encrypted base64 string
  * @returns The original data, or null if decryption failed
  */
-export function decrypt(encryptedStr: string): any {
+export function decrypt(encryptedStr: string): unknown {
   try {
     // Decode from Base64
     const encrypted = atob(encryptedStr);
