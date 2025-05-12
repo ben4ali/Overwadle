@@ -29,7 +29,7 @@ const GameContent = () => {
       />
       <footer className="py-2 md:py-4 text-center text-muted-foreground text-xs md:text-sm">
         <p>Overwatch Hero Guess &copy; {new Date().getFullYear()}</p>
-        <p className="text-[10px] md:text-xs">Not affiliated with Blizzard Entertainment</p>
+        <p className="text-[10px] md:text-xs">This game is fan-made and not affiliated with Blizzard Entertainment</p>
       </footer>
     </div>
   );
