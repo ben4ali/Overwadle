@@ -1,54 +1,76 @@
-# React + TypeScript + Vite
+# Overwadle
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<div align="center">
+  <img src="./src/assets/images/overwatch-logo-white.png" alt="Overwadle Logo" width="100"/>
+  <h3>The Overwatch Guessing Game</h3>
+  <p>A daily Overwatch hero guessing game, inspired by Loldle</p>
+</div>
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Overwadle is a fan-made daily guessing game for Overwatch fans where you try to identify the secret hero. With three distinct game modes, each offering a different way to test your Overwatch knowledge, Overwadle brings a fresh challenge every day.
 
-## Expanding the ESLint configuration
+## Previews
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+<div align="center">
+  <img src="./previews/preview1.png" alt="Classic Mode" width="300"/>
+  <img src="./previews/preview2.png" alt="Emoji Mode" width="300"/>
+  <img src="./previews/preview3.png" alt="Quotes Mode" width="300"/>
+</div>
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Game Modes
+
+### Classic Mode
+Guess the hero based on their attributes. After each guess, you'll see which attributes match the secret hero.
+
+### Quotes Mode
+Identify the hero from one of their in-game voice lines. How well do you know your favorite heroes' catchphrases?
+
+### Emoji Mode
+Can you recognize a hero from a series of emojis that represent them? Test your emoji interpretation skills!
+
+## Technologies
+
+- **React** - Frontend UI library
+- **TypeScript** - Type-safe JavaScript
+- **Vite** - Fast build tool and development server
+- **React Router** - Navigation
+- **GSAP** - Animations
+- **Tailwind CSS** - Utility-first CSS framework
+- **Radix UI** - Accessible UI componentss
+- **Crypto-js** - Secure storage for game state
+
+## Features
+
+- Daily rotating heroes
+- Three unique game modes
+- Clean, Overwatch-themed UI
+- Game progress saved locally
+- Daily reset timer
+- Encry
+
+## Getting Started
+
+```bash
+# Clone the repository
+git clone https://github.com/ben4ali/Overwadle
+
+# Navigate to the project
+cd overwadle
+
+# Install dependencies
+npm install
+
+# Run the development server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Inspiration
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Overwadle is inspired by [Loldle](https://loldle.net/), a similar guessing game for League of Legends. This project adapts that concept to the Overwatch universe, bringing daily guessing challenges to Overwatch fans.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+---
+
+Created for fun by [Ali Benkarrouch](https://github.com/ben4ali)
+
+> **Note:** This game is fan-made and not affiliated with Blizzard Entertainment.
