@@ -4,10 +4,10 @@ import overwatchTitle from '../assets/images/overwatch-title.png';
 
 const Header = () => {
   const { currentMode, setCurrentMode } = useGame();
-
   const modes = [
     { id: 'classic', name: 'Classic' },
     { id: 'quote', name: 'Quotes' },
+    { id: 'emoji', name: 'Emoji' },
   ];
 
   return (
@@ -41,7 +41,7 @@ const Header = () => {
                     : 'bg-white border-ow-blue text-ow-blue hover:bg-ow-blue hover:text-white'
                   }
                 `}
-                onClick={() => setCurrentMode(mode.id as 'classic' | 'quote')}
+                onClick={() => setCurrentMode(mode.id as 'classic' | 'quote' | 'emoji')}
                 >
                 {mode.name}
                 </button>

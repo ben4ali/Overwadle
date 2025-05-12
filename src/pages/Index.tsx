@@ -2,6 +2,7 @@ import { GameProvider, useGame } from '../contexts/GameContext';
 import Header from '../components/Header';
 import ClassicMode from '../components/modes/ClassicMode';
 import QuotesMode from '../components/modes/QuotesMode';
+import EmojiMode from '../components/modes/EmojiMode';
 import overwatchBG  from '../assets/images/overwatch-bg.jpeg'
 
 const GameContent = () => {
@@ -12,6 +13,8 @@ const GameContent = () => {
         return <ClassicMode />;
       case 'quote':
         return <QuotesMode />;
+      case 'emoji':
+        return <EmojiMode />;
       default:
         return <ClassicMode />;
     }
