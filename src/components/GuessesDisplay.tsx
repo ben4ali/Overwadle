@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, FC } from 'react';
 import { ArrowDownIcon, ArrowUpIcon } from 'lucide-react';
 import { useGame } from '../contexts/GameContext';
 import { gsap } from 'gsap';
@@ -7,12 +7,19 @@ import tankIcon from '../assets/images/Tank.svg';
 import damageIcon from '../assets/images/Damage.svg';
 import supportIcon from '../assets/images/Support.svg';
 
-const GuessesDisplay = () => {
+interface GuessesDisplayProps {
+  justArrived?: boolean;
+}
+
+const GuessesDisplay : FC<GuessesDisplayProps> = ({
+  justArrived = true,
+}) => {
   const { guesses, gameWon, targetHero, setGameWon } = useGame();
   const guessesContainerRef = useRef<HTMLDivElement>(null);
   const [isAnimating, setIsAnimating] = useState(false);
   const [showWinMessage, setShowWinMessage] = useState(false);
   const prevGuessesLengthRef = useRef(-1);
+
 
   const columns = [
     { key: 'hero', label: 'Hero' },
@@ -22,7 +29,7 @@ const GuessesDisplay = () => {
     { key: 'mobility', label: 'Mobility' },
     { key: 'releaseYear', label: 'Year' },
   ];
-  
+
   useEffect(() => {
     prevGuessesLengthRef.current = guesses.length;
     if (gameWon) {
@@ -31,11 +38,18 @@ const GuessesDisplay = () => {
   }, [gameWon, guesses.length]);
 
   useEffect(() => {
+    if (justArrived) {
+      return;
+    }
+    if (prevGuessesLengthRef.current === -1) {
+      prevGuessesLengthRef.current = guesses.length;
+      return;
+    }
+
     const currentGuessesLength = guesses.length;
     prevGuessesLengthRef.current = currentGuessesLength;
    
     if (currentGuessesLength > 0) {
- 
       const lastGuess = guesses[currentGuessesLength - 1];
       const isCorrectGuess = lastGuess?.result.name === true;
       
@@ -43,40 +57,38 @@ const GuessesDisplay = () => {
       setShowWinMessage(false);
       window.dispatchEvent(new CustomEvent('guesses-animating', { detail: true }));
       
-        const newestGuessRow = guessesContainerRef.current?.querySelector('.guess-0');
-        if (!newestGuessRow) {
-          console.error('Animation target not found');
+      const newestGuessRow = guessesContainerRef.current?.querySelector('.guess-0');
+      if (!newestGuessRow) {
+        console.error('Animation target not found');
+        setIsAnimating(false);
+        return;
+      }
+      
+      const cells = newestGuessRow.querySelectorAll('.result-cell');
+      gsap.set(cells, { opacity: 0, y: 10 });
+      
+      gsap.to(cells, {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        ease: "power2.out",
+        stagger: {
+          each: 0.5,
+          from: "start",
+          ease: "power1.in"
+        },
+        onComplete: () => {
           setIsAnimating(false);
-          return;
-        }
-        
-        const cells = newestGuessRow.querySelectorAll('.result-cell');
-        
-
-        gsap.set(cells, { opacity: 0, y: 10 });
-        
-        gsap.to(cells, {
-          opacity: 1,
-          y: 0,
-          duration: 0.5,
-          ease: "power2.out",
-          stagger: {
-            each: 0.5,
-            from: "start",
-            ease: "power1.in"
-          },
-          onComplete: () => {
-            setIsAnimating(false);
-            window.dispatchEvent(new CustomEvent('guesses-animating', { detail: false }));
-            
-            if (isCorrectGuess) {
-              setGameWon(true);
-              setShowWinMessage(true);
-            } else {
-              setShowWinMessage(false);
-            }
-          },
-        });
+          window.dispatchEvent(new CustomEvent('guesses-animating', { detail: false }));
+          
+          if (isCorrectGuess) {
+            setGameWon(true);
+            setShowWinMessage(true);
+          } else {
+            setShowWinMessage(false);
+          }
+        },
+      });
     }
   }, [guesses]);
 
