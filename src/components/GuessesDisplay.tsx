@@ -19,7 +19,9 @@ const GuessesDisplay = () => {
     { key: 'weaponType', label: 'Weapon' },
     { key: 'mobility', label: 'Mobility' },
     { key: 'releaseYear', label: 'Year' },
-  ];  useEffect(() => {
+  ];
+  
+  useEffect(() => {
     if (guesses.length && guessesContainerRef.current) {
       setIsAnimating(true);
       const lastGuessIndex = guesses.length - 1;
@@ -58,25 +60,32 @@ const GuessesDisplay = () => {
     if (result === 'partial') return 'bg-yellow-500';
     return 'bg-red-600';
   };
+  
   return (
-    <div className="w-full">
-          {gameWon && !isAnimating && (
+    <div className="w-full overflow-x-auto pb-4">
+      {gameWon && !isAnimating && (
         <div className="text-center my-6">
           <span className="text-3xl font-bold text-green-400 animate-bounce mb-3">🎉 You won!</span>
         </div>
       )}
-      <div className="grid grid-cols-6 gap-5 mb-2 items-center justify-between w-full max-w-4xl mx-auto">
+      
+      {/* Table header */}
+      <div className="grid grid-cols-6 gap-1 md:gap-5 mb-2 items-center justify-between w-full max-w-4xl mx-auto min-w-[600px]">
         {columns.map((column) => (
-          <div key={column.key} className="font-semibold text-center w-full bg-[#1c1c34] text-white h-[3rem] flex items-center justify-center">
+          <div 
+            key={column.key} 
+            className="font-semibold text-center w-full bg-[#1c1c34] text-white h-[3rem] flex items-center justify-center text-xs md:text-base px-1"
+          >
             {column.label.toUpperCase()}
           </div>
         ))}
       </div>
 
-      <div className="space-y-2 w-full max-w-4xl mx-auto" ref={guessesContainerRef}>
+      {/* Guesses rows */}
+      <div className="space-y-2 w-full max-w-4xl mx-auto min-w-[600px]" ref={guessesContainerRef}>
         {[...guesses].reverse().map((guess, index) => (
-          <div key={guesses.length - 1 - index} className={`grid grid-cols-6 gap-5 guess-${guesses.length - 1 - index} w-full`}>
-            <div className="result-cell">
+          <div key={guesses.length - 1 - index} className={`grid grid-cols-6 gap-1 md:gap-5 guess-${guesses.length - 1 - index} w-full`}>
+            <div className="result-cell md:h-[8.2rem] h-[6rem]">
               <div className="flex flex-col items-center">
                 <img
                   src={guess.hero.image}
@@ -85,32 +94,32 @@ const GuessesDisplay = () => {
                 />
               </div>
             </div>
-            <div className={`result-cell ${getResultClass(!!guess.result.role)} text-white`}>
-              <span className={`text-white`}>
-                {guess.hero.role === 'Tank' && <img src={tankIcon} alt="Tank" className="inline w-4 h-4 mr-1" style={{'filter':'invert(1)'}} />}
-                {guess.hero.role === 'Damage' && <img src={damageIcon} alt="Damage" className="inline w-4 h-4 mr-1" style={{'filter':'invert(1)'}} />}
-                {guess.hero.role === 'Support' && <img src={supportIcon} alt="Support" className="inline w-4 h-4 mr-1" style={{'filter':'invert(1)'}} />}
+            <div className={`result-cell h-[6rem] md:h-[8.2rem] ${getResultClass(!!guess.result.role)} text-white`}>
+              <span className={`text-white text-xs md:text-base`}>
+                {guess.hero.role === 'Tank' && <img src={tankIcon} alt="Tank" className="inline w-3 h-3 md:w-4 md:h-4 mr-1" style={{'filter':'invert(1)'}} />}
+                {guess.hero.role === 'Damage' && <img src={damageIcon} alt="Damage" className="inline w-3 h-3 md:w-4 md:h-4 mr-1" style={{'filter':'invert(1)'}} />}
+                {guess.hero.role === 'Support' && <img src={supportIcon} alt="Support" className="inline w-3 h-3 md:w-4 md:h-4 mr-1" style={{'filter':'invert(1)'}} />}
                 {guess.hero.role}
               </span>
             </div>
-            <div className={`result-cell ${getResultClass(!!guess.result.affiliation)} text-white`}>
+            <div className={`result-cell h-[6rem] md:h-[8.2rem] ${getResultClass(!!guess.result.affiliation)} text-white text-xs md:text-base px-1`}>
               {guess.hero.affiliation}
             </div>
-            <div className={`result-cell ${getResultClass(!!guess.result.weaponType)} text-white`}>
+            <div className={`result-cell h-[6rem] md:h-[8.2rem] ${getResultClass(!!guess.result.weaponType)} text-white text-xs md:text-base`}>
               {guess.hero.weaponType}
             </div>
-            <div className={`result-cell ${getResultClass(!!guess.result.mobility)} text-white`}>
+            <div className={`result-cell h-[6rem] md:h-[8.2rem] ${getResultClass(!!guess.result.mobility)} text-white text-xs md:text-base`}>
               {guess.hero.mobility}
             </div>
-            <div className={`result-cell ${getResultClass(!!guess.result.releaseYear)} text-white`}>
-              <div className="flex items-center justify-center gap-2">
+            <div className={`result-cell h-[6rem] md:h-[8.2rem] ${getResultClass(!!guess.result.releaseYear)} text-white text-xs md:text-base`}>
+              <div className="flex items-center justify-center gap-1 md:gap-2">
                 {guess.hero.releaseYear}
                 {!guess.result.releaseYear && targetHero && (
                   <>
                     {guess.hero.releaseYear > targetHero.releaseYear ? (
-                      <ArrowDownIcon className="w-5 h-5 text-blue-300" />
+                      <ArrowDownIcon className="w-3 h-3 md:w-5 md:h-5 text-blue-300" />
                     ) : (
-                      <ArrowUpIcon className="w-5 h-5 text-blue-300" />
+                      <ArrowUpIcon className="w-3 h-3 md:w-5 md:h-5 text-blue-300" />
                     )}
                   </>
                 )}

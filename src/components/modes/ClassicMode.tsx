@@ -25,8 +25,8 @@ const ClassicMode = () => {
   }, []);
 
   return (
-    <div className="container mx-auto px-4 py-8" ref={containerRef}>
-      <div className="flex flex-col items-center space-y-6">
+    <div className="container mx-auto px-2 md:px-4 py-4 md:py-8" ref={containerRef}>
+      <div className="flex flex-col items-center space-y-4 md:space-y-6">
         <div className="w-full max-w-md">
           <HeroInput />
           <GameStats />

@@ -79,7 +79,7 @@ const HeroInput = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           onClick={() => setShowDropdown(true)}
-          className="hero-input w-full"
+          className="hero-input w-full text-sm md:text-base py-1 md:py-2"
           disabled={!isGameActive}
         />
       </div>
@@ -87,23 +87,23 @@ const HeroInput = () => {
       {showDropdown && (
         <div
           ref={dropdownRef}
-          className="absolute mt-2 w-full bg-card border border-muted rounded-md shadow-lg z-10 max-h-60 overflow-auto"
+          className="absolute mt-1 md:mt-2 w-full bg-card border border-muted rounded-md shadow-lg z-10 max-h-48 md:max-h-60 overflow-auto"
         >
           {filteredHeroes.length > 0 ? (
             filteredHeroes.map((hero) => (
               <div
                 key={hero.id}
-                className="flex items-center p-2 hover:bg-muted cursor-pointer"
+                className="flex items-center p-1 md:p-2 hover:bg-muted cursor-pointer"
                 onClick={() => handleHeroSelect(hero)}
               >
                 <img
                   src={hero.image}
                   alt={hero.name}
-                  className="w-10 h-10 object-cover mr-3"
+                  className="w-8 h-8 md:w-10 md:h-10 object-cover mr-2 md:mr-3"
                 />
                 <div>
-                  <div className="font-medium">{hero.name}</div>
-                  <div className={`text-xs ${
+                  <div className="font-medium text-sm md:text-base">{hero.name}</div>
+                  <div className={`text-[10px] md:text-xs ${
                     hero.role === 'Tank' ? 'text-tank' :
                     hero.role === 'Damage' ? 'text-damage' :
                     'text-support'
@@ -114,7 +114,7 @@ const HeroInput = () => {
               </div>
             ))
           ) : (
-            <div className="p-2 text-muted-foreground">No heroes found</div>
+            <div className="p-2 text-muted-foreground text-sm">No heroes found</div>
           )}
         </div>
       )}

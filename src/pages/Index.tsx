@@ -27,9 +27,9 @@ const GameContent = () => {
         className="fixed inset-0 object-cover w-full h-full z-[-5] opacity-30"
         style={{ filter: 'blur(5px)' }}
       />
-      <footer className="py-4 text-center text-muted-foreground text-sm">
+      <footer className="py-2 md:py-4 text-center text-muted-foreground text-xs md:text-sm">
         <p>Overwatch Hero Guess &copy; {new Date().getFullYear()}</p>
-        <p className="text-xs">Not affiliated with Blizzard Entertainment</p>
+        <p className="text-[10px] md:text-xs">Not affiliated with Blizzard Entertainment</p>
       </footer>
     </div>
   );
