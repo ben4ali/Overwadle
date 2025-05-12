@@ -1,6 +1,7 @@
 import { createContext, useState, useContext, useEffect } from 'react';
 import type { Hero } from '../data/heroes';
 import { getDailyHero } from '../data/heroes';
+import { secureStore, secureRetrieve } from '../lib/encryption';
 
 export type GameMode = 'classic' | 'ability' | 'quote' | 'emoji' | 'splash';
 
@@ -38,29 +39,29 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
   const [lastReset, setLastReset] = useState(new Date());
 
   useEffect(() => {
-    const savedState = localStorage.getItem('overwatchHeroGuessGame');
+    const savedState = secureRetrieve('overwatchHeroGuessGame');
     const today = new Date().toDateString();
     
     if (savedState) {
-      const state = JSON.parse(savedState);
-      
-      if (state.date === today) {
-        setTargetHero(state.targetHero);
-        setGuesses(state.guesses || []);
-        setGameWon(state.gameWon || false);
-        setLastReset(new Date(state.lastReset || new Date()));
-        setCurrentMode(state.currentMode || 'classic');
+      // State is now securely retrieved and decrypted
+      if (savedState.date === today) {
+        setTargetHero(savedState.targetHero);
+        setGuesses(savedState.guesses || []);
+        setGameWon(savedState.gameWon || false);
+        setLastReset(new Date(savedState.lastReset || new Date()));
+        setCurrentMode(savedState.currentMode || 'classic');
         return;
       }
     }
     
+    // If no saved state or it's a new day, create new game
     const newTargetHero = getDailyHero();
     setTargetHero(newTargetHero);
     setGuesses([]);
     setGameWon(false);
     setLastReset(new Date());
     
-    saveGameState({
+    secureStore('overwatchHeroGuessGame', {
       targetHero: newTargetHero,
       guesses: [],
       gameWon: false,
@@ -68,11 +69,11 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
       date: today,
       currentMode: currentMode
     });
-  }, [currentMode]);
-
+  }, [currentMode]); // Added currentMode to dependency array
+  
   useEffect(() => {
     if (targetHero) {
-      saveGameState({
+      secureStore('overwatchHeroGuessGame', {
         targetHero,
         guesses,
         gameWon,
@@ -82,10 +83,6 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
       });
     }
   }, [targetHero, guesses, gameWon, lastReset, currentMode]);
-
-  const saveGameState = (state: unknown) => {
-    localStorage.setItem('overwatchHeroGuessGame', JSON.stringify(state));
-  };
 
   const addGuess = (hero: Hero) => {
     // Only check if the game was already won
