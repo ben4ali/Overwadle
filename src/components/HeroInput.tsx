@@ -7,21 +7,30 @@ const HeroInput = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [showDropdown, setShowDropdown] = useState(false);
   const [filteredHeroes, setFilteredHeroes] = useState<Hero[]>([]);
-  const { addGuess, guesses, gameWon, remainingGuesses } = useGame();
+  const { addGuess, guesses, gameWon } = useGame();
   const inputRef = useRef<HTMLInputElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
+  // Listen for animation state from GuessesDisplay
+  const [isAnimating, setIsAnimating] = useState(false);
+  useEffect(() => {
+    const handler = (e: CustomEvent) => setIsAnimating(e.detail);
+    window.addEventListener('guesses-animating', handler as EventListener);
+    return () => window.removeEventListener('guesses-animating', handler as EventListener);
+  }, []);
+
   useEffect(() => {
     if (searchTerm.length > 0) {
+      const guessedIds = new Set(guesses.map(g => g.hero.id));
       const filtered = heroes.filter((hero) =>
-        hero.name.toLowerCase().includes(searchTerm.toLowerCase())
+        hero.name.toLowerCase().includes(searchTerm.toLowerCase()) && !guessedIds.has(hero.id)
       );
       setFilteredHeroes(filtered);
       setShowDropdown(true);
     } else {
       setShowDropdown(false);
     }
-  }, [searchTerm]);
+  }, [searchTerm, guesses]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -43,18 +52,16 @@ const HeroInput = () => {
 
   const handleHeroSelect = (hero: Hero) => {
     const alreadyGuessed = guesses.some((guess) => guess.hero.id === hero.id);
-    
     if (alreadyGuessed) {
       alert("You've already guessed this hero!");
       return;
     }
-    
     addGuess(hero);
     setSearchTerm('');
     setShowDropdown(false);
   };
 
-  const isGameActive = !gameWon && remainingGuesses > 0;
+  const isGameActive = !gameWon && !isAnimating;
 
   return (
     <div className="w-full max-w-md relative">
@@ -67,6 +74,8 @@ const HeroInput = () => {
               ? "Enter a hero name..."
               : gameWon
               ? "You won!"
+              : isAnimating
+              ? "Wait for animation..."
               : "No more guesses"
           }
           value={searchTerm}
@@ -92,7 +101,7 @@ const HeroInput = () => {
                 <img
                   src={hero.image}
                   alt={hero.name}
-                  className="w-10 h-10 object-cover rounded-full mr-3"
+                  className="w-10 h-10 object-cover mr-3"
                 />
                 <div>
                   <div className="font-medium">{hero.name}</div>

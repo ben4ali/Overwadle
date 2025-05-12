@@ -1,6 +1,6 @@
 import { useGame } from '../contexts/GameContext';
-import { Gamepad } from 'lucide-react';
-
+import overatchLogo from '../assets/images/overwatch-logo-white.png';
+import overwatchTitle from '../assets/images/overwatch-title.png';
 const Header = () => {
   const { currentMode, setCurrentMode } = useGame();
 
@@ -12,9 +12,18 @@ const Header = () => {
     <header className="w-full py-6 px-4 border-b border-muted">
       <div className="container mx-auto">
         <div className="flex flex-col items-center justify-center space-y-4">
-          <h1 className="text-4xl font-bold text-ow-orange flex items-center gap-2">
-            <Gamepad className="h-8 w-8" />
-            Overwatch <span className="text-ow-blue">Hero</span> Guess
+          <h1 className="text-4xl font-bold text-ow-light-orange flex items-center gap-2">
+            <img
+              src={overatchLogo}
+              alt="Overwatch Logo"
+              className="h-[3rem] w-[3rem]"
+            />
+            <img
+              src={overwatchTitle}
+              alt="Overwatch Title"
+              className="h-[5rem]"
+            />
+            
           </h1>
           <p className="text-lg text-muted-foreground">
             Can you guess today's Overwatch hero?
@@ -22,17 +31,19 @@ const Header = () => {
           
           <div className="flex space-x-2 mt-4">
             {modes.map((mode) => (
-              <button
+                <button
                 key={mode.id}
-                className={`px-4 py-2 rounded-md transition-colors ${
+                className={`px-5 py-2  font-bold uppercase tracking-wide shadow-md  transition-colors duration-150
+                  ${
                   currentMode === mode.id
-                    ? 'bg-ow-blue text-white'
-                    : 'bg-muted hover:bg-muted/80'
-                }`}
+                    ? 'bg-ow-orange text-white hover:bg-light-ow-orange'
+                    : 'bg-white border-ow-blue text-ow-blue hover:bg-ow-blue hover:text-white'
+                  }
+                `}
                 onClick={() => setCurrentMode(mode.id as any)}
-              >
+                >
                 {mode.name}
-              </button>
+                </button>
             ))}
           </div>
         </div>

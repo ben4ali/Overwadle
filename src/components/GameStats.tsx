@@ -1,7 +1,7 @@
 import { useGame } from '../contexts/GameContext';
 
 const GameStats = () => {
-  const { remainingGuesses, gameWon, targetHero } = useGame();
+  const { gameWon, targetHero } = useGame();
   
   const now = new Date();
   const tomorrow = new Date(now);
@@ -14,19 +14,15 @@ const GameStats = () => {
   const minutes = Math.floor((timeUntilReset % (1000 * 60 * 60)) / (1000 * 60));
   
   return (
-    <div className="flex flex-col items-center justify-center space-y-4 mt-6 p-4 border border-muted rounded-md bg-card/50">
+    <div className="flex flex-col items-center justify-center mt-6 p-4 border border-muted rounded-md bg-card/50">
       <div className="text-lg">
-        <span className="font-semibold mr-2">Remaining Guesses:</span>
-        <span className={remainingGuesses > 2 ? 'text-green-500' : remainingGuesses > 0 ? 'text-yellow-500' : 'text-red-500'}>
-          {remainingGuesses}
-        </span>
       </div>
       
-      <div className="text-sm text-muted-foreground">
+      <div className="text-sm flex items-center justify-center m-0 text-muted-foreground">
         Next hero in: {hours}h {minutes}m
       </div>
       
-      {(gameWon || remainingGuesses === 0) && targetHero && (
+      {(gameWon) && targetHero && (
         <div className="mt-4 p-4 rounded-md bg-card animate-fade-in">
           <p className="text-lg font-semibold mb-2">
             {gameWon ? '🎉 You won!' : '😔 Game Over'}

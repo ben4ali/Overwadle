@@ -34,16 +34,24 @@
 
     --radius: 0.5rem;
   }
-}
 
-@layer base {
+  @font-face {
+    font-family: 'Overwatch';
+    src: url('./assets/OVERWATCH.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
   * {
     @apply border-border;
   }
 
   body {
-    @apply bg-background text-foreground;
+    font-family: 'Overwatch', Arial, Helvetica, sans-serif !important;
     font-feature-settings: "rlig" 1, "calt" 1;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
   }
 
   ::-webkit-scrollbar {
@@ -70,18 +78,18 @@
   }
 
   .result-cell {
-    @apply border border-muted rounded-md p-2 text-center flex items-center justify-center;
+    @apply border border-muted h-[8.2rem] w-[8.2rem] text-center flex items-center justify-center;
   }
 
   .result-correct {
-    @apply bg-correct/20 border-correct/50 text-correct;
+    @apply bg-correct border-correct/50 text-correct;
   }
   
   .result-partial {
-    @apply bg-partial/20 border-partial/50 text-partial;
+    @apply bg-partial border-partial/50 text-partial;
   }
   
   .result-incorrect {
-    @apply bg-incorrect/20 border-incorrect/50 text-incorrect;
+    @apply bg-incorrect border-incorrect/50 text-incorrect;
   }
 }

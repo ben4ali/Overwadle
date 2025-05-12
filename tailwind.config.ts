@@ -65,7 +65,8 @@ export default {
 				// Overwatch specific colors
 				'ow-blue': '#218ffe',
 				'ow-dark': '#43484c',
-				'ow-orange': '#f99e1a',
+				'ow-light-orange': '#f99e1a',
+				'ow-orange': '#e5641d',
 				'ow-light': '#f0edf2',
 				'tank': '#2673c4',
 				'damage': '#c83c3c',

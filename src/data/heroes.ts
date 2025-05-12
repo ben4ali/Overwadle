@@ -18,7 +18,7 @@ export const heroes: Hero[] = [
     weaponType: "Projectile",
     mobility: "Low",
     releaseYear: 2016,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltc36749d5584aa454/638a623047413e0b8807bbf4/ana-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/3429c394716364bbef802180e9763d04812757c205e1b4568bc321772096ed86.png"
   },
   {
     id: "ashe",
@@ -28,7 +28,7 @@ export const heroes: Hero[] = [
     weaponType: "Hitscan",
     mobility: "Medium",
     releaseYear: 2018,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltc8cad0e0dab3c5fe/638a62304be20b0b72b25151/ashe-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/8dc2a024c9b7d95c7141b2ef065590dbc8d9018d12ad15f76b01923986702228.png"
   },
   {
     id: "baptiste",
@@ -38,7 +38,7 @@ export const heroes: Hero[] = [
     weaponType: "Hitscan",
     mobility: "High",
     releaseYear: 2019,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt46b8643c7695bd26/638a62304e86a810b3965ee8/baptiste-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/f979896f74ba22db2a92a85ae1260124ab0a26665957a624365e0f96e5ac5b5c.png"
   },
   {
     id: "bastion",
@@ -48,7 +48,7 @@ export const heroes: Hero[] = [
     weaponType: "Hitscan",
     mobility: "Low",
     releaseYear: 2016,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltc5944fd5d9fec3ea/638a623047413e0b8807bbf6/bastion-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/4d715f722c42215072b5dd0240904aaed7b5285df0b2b082d0a7f1865b5ea992.png"
   },
   {
     id: "brigitte",
@@ -58,7 +58,7 @@ export const heroes: Hero[] = [
     weaponType: "Melee",
     mobility: "Medium",
     releaseYear: 2018,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltaa81fd9fb9f1025c/638a62306f21bb0afab75acc/brigitte-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/48392820c6976ee1cd8dde13e71df85bf15560083ee5c8658fe7c298095d619a.png"
   },
   {
     id: "dva",
@@ -68,7 +68,7 @@ export const heroes: Hero[] = [
     weaponType: "Hitscan",
     mobility: "High",
     releaseYear: 2016,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt8a9121cf88dc7d3f/638a6230d47acc0bfb1870c9/dva-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/ca114f72193e4d58a85c087e9409242f1a31e808cf4058678b8cbf767c2a9a0a.png"
   },
   {
     id: "doomfist",
@@ -78,7 +78,7 @@ export const heroes: Hero[] = [
     weaponType: "Melee",
     mobility: "High",
     releaseYear: 2017,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltceaa6cf0c3e89c97/638a6230a3c48c0b8fd51fe1/doomfist-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/13750471c693c1a360eb19d5ace229c8599a729cd961d72ebee0e157657b7d18.png"
   },
   {
     id: "echo",
@@ -88,7 +88,7 @@ export const heroes: Hero[] = [
     weaponType: "Projectile",
     mobility: "High",
     releaseYear: 2020,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltc73027aec5ccf6ca/638a62304be20b0b72b25153/echo-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/f086bf235cc6b7f138609594218a8385c8e5f6405a39eceb0deb9afb429619fe.png"
   },
   {
     id: "genji",
@@ -98,7 +98,7 @@ export const heroes: Hero[] = [
     weaponType: "Projectile",
     mobility: "High",
     releaseYear: 2016,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt5c52697eeeeef752/638a62306a25090f65315511/genji-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/4edf5ea6d58c449a2aeb619a3fda9fff36a069dfbe4da8bc5d8ec1c758ddb8dc.png"
   },
   {
     id: "hanzo",
@@ -108,7 +108,7 @@ export const heroes: Hero[] = [
     weaponType: "Projectile",
     mobility: "Medium",
     releaseYear: 2016,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blte942c63420118ecb/638a62306a25090f65315513/hanzo-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/aecd8fa677f0093344fab7ccb7c37516c764df3f5ff339a5a845a030a27ba7e0.png"
   },
   {
     id: "junker-queen",
@@ -118,7 +118,7 @@ export const heroes: Hero[] = [
     weaponType: "Melee",
     mobility: "Medium",
     releaseYear: 2022,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt0207b611968bcc38/638a6230d8e4d310ae11c5f0/junker-queen-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/b4fa5f937fe07ef56c78bca80be9602c062b8d4451692aecff50e2f68c5c6476.png"
   },
   {
     id: "junkrat",
@@ -128,7 +128,7 @@ export const heroes: Hero[] = [
     weaponType: "Projectile",
     mobility: "Medium",
     releaseYear: 2016,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt25b1502a06614eb2/638a623020e7330bb5773ded/junkrat-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/037e3df083624e5480f8996821287479a375f62b470572a22773da0eaf9441d0.png"
   },
   {
     id: "kiriko",
@@ -138,7 +138,7 @@ export const heroes: Hero[] = [
     weaponType: "Projectile",
     mobility: "High",
     releaseYear: 2022,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt81698dd8dabc3a7a/638a6230ebbfae0bfd3e43ab/kiriko-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/088aff2153bdfa426984b1d5c912f6af0ab313f0865a81be0edd114e9a2f79f9.png"
   },
   {
     id: "lucio",
@@ -148,7 +148,7 @@ export const heroes: Hero[] = [
     weaponType: "Projectile",
     mobility: "High",
     releaseYear: 2016,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltdadf5366b633535a/638a623148aace0c1a644ef1/lucio-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/e2ff2527610a0fbe0c9956f80925123ef3e66c213003e29d37436de30b90e4e1.png"
   },
   {
     id: "cassidy",
@@ -158,7 +158,7 @@ export const heroes: Hero[] = [
     weaponType: "Hitscan",
     mobility: "Medium",
     releaseYear: 2016,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt1c6bc2a3c077e213/638a6230fa369c0bf93123c6/cassidy-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/6cfb48b5597b657c2eafb1277dc5eef4a07eae90c265fcd37ed798189619f0a5.png"
   },
   {
     id: "mei",
@@ -168,7 +168,7 @@ export const heroes: Hero[] = [
     weaponType: "Projectile",
     mobility: "Low",
     releaseYear: 2016,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt7c217592a05870e4/638a6231a3c48c0b8fd51fe5/mei-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/1533fcb0ee1d3f9586f84b4067c6f63eca3322c1c661f69bfb41cd9e4f4bcc11.png"
   },
   {
     id: "mercy",
@@ -178,7 +178,7 @@ export const heroes: Hero[] = [
     weaponType: "Hitscan",
     mobility: "High",
     releaseYear: 2016,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltbcf2689b3f4b1b56/638a6231ebbfae0bfd3e43ad/mercy-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/2508ddd39a178d5f6ae993ab43eeb3e7961e5a54a9507e6ae347381193f28943.png"
   },
   {
     id: "moira",
@@ -188,7 +188,7 @@ export const heroes: Hero[] = [
     weaponType: "Beam",
     mobility: "Medium",
     releaseYear: 2017,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blte9f54c9de021d5cb/638a62314e86a810b3965eee/moira-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/000beeb5606e01497897fa9210dd3b1e78e1159ebfd8afdc9e989047d7d3d08f.png"
   },
   {
     id: "orisa",
@@ -198,7 +198,7 @@ export const heroes: Hero[] = [
     weaponType: "Projectile",
     mobility: "Low",
     releaseYear: 2017,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt6dd2bd051c382701/638a6231a3c48c0b8fd51fe7/orisa-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/71e96294617e81051d120b5d04b491bb1ea40e2933da44d6631aae149aac411d.png"
   },
   {
     id: "pharah",
@@ -208,7 +208,7 @@ export const heroes: Hero[] = [
     weaponType: "Projectile",
     mobility: "High",
     releaseYear: 2016,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltce1743235fa36bd1/638a62314be20b0b72b25157/pharah-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/f8261595eca3e43e3b37cadb8161902cc416e38b7e0caa855f4555001156d814.png"
   },
   {
     id: "reaper",
@@ -218,7 +218,7 @@ export const heroes: Hero[] = [
     weaponType: "Hitscan",
     mobility: "Medium",
     releaseYear: 2016,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt936823e9e16d6e93/638a62317e3cce0bc25c33d4/reaper-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/2edb9af69d987bb503cd31f7013ae693640e692b321a73d175957b9e64394f40.png"
   },
   {
     id: "reinhardt",
@@ -228,7 +228,7 @@ export const heroes: Hero[] = [
     weaponType: "Melee",
     mobility: "Medium",
     releaseYear: 2016,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt99f809b87eff2b7b/638a6231d47acc0bfb1870cd/reinhardt-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/490d2f79f8547d6e364306af60c8184fb8024b8e55809e4cc501126109981a65.png"
   },
   {
     id: "roadhog",
@@ -238,7 +238,7 @@ export const heroes: Hero[] = [
     weaponType: "Projectile",
     mobility: "Low",
     releaseYear: 2016,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltaed8c7462b8094b7/638a623148aace0c1a644ef3/roadhog-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/72e02e747b66b61fcbc02d35d350770b3ec7cbaabd0a7ca17c0d82743d43a7e8.png"
   },
   {
     id: "sigma",
@@ -248,7 +248,7 @@ export const heroes: Hero[] = [
     weaponType: "Projectile",
     mobility: "Medium",
     releaseYear: 2019,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt9432fe1ca6234f38/638a6231b9e2df0badfd13eb/sigma-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/cd7a4c0a0df8924afb2c9f6df864ed040f20250440c36ca2eb634acf6609c5e4.png"
   },
   {
     id: "soldier-76",
@@ -258,7 +258,7 @@ export const heroes: Hero[] = [
     weaponType: "Hitscan",
     mobility: "Medium",
     releaseYear: 2016,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltbea4923d1695ad45/638a6231d8e4d310ae11c5f4/soldier-76-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/20b4ef00ed05d6dba75df228241ed528df7b6c9556f04c8070bad1e2f89e0ff5.png"
   },
   {
     id: "sombra",
@@ -268,7 +268,7 @@ export const heroes: Hero[] = [
     weaponType: "Hitscan",
     mobility: "High",
     releaseYear: 2016,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt809d839e159f0f92/638a623248aace0c1a644ef5/sombra-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/bca8532688f01b071806063b9472f1c0f9fc9c7948e6b59e210006e69cec9022.png"
   },
   {
     id: "symmetra",
@@ -278,7 +278,7 @@ export const heroes: Hero[] = [
     weaponType: "Beam",
     mobility: "Low",
     releaseYear: 2016,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blta988f28180af76a8/638a6232d47acc0bfb1870cf/symmetra-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/7f2024c5387c9d76d944a5db021c2774d1e9d7cbf39e9b6a35b364d38ea250ac.png"
   },
   {
     id: "torbjorn",
@@ -288,7 +288,7 @@ export const heroes: Hero[] = [
     weaponType: "Projectile",
     mobility: "Low",
     releaseYear: 2016,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt423fa7a9bf2ae752/638a62326a25090f65315517/torbjorn-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/1309ab1add1cc19189a2c8bc7b1471f88efa1073e9705d2397fdb37d45707d01.png"
   },
   {
     id: "tracer",
@@ -298,7 +298,7 @@ export const heroes: Hero[] = [
     weaponType: "Hitscan",
     mobility: "High",
     releaseYear: 2016,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt906707fa089977d6/638a62327e3cce0bc25c33d6/tracer-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/a66413200e934da19540afac965cfe8a2de4ada593d9a52d53108bb28e8bbc9c.png"
   },
   {
     id: "widowmaker",
@@ -308,7 +308,7 @@ export const heroes: Hero[] = [
     weaponType: "Hitscan",
     mobility: "Medium",
     releaseYear: 2016,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt85c8cd1906de0d1b/638a6232fa369c0bf93123ca/widowmaker-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/a714f1cb33cc91c6b5b3e89ffe7e325b99e7c89cc8e8feced594f81305147efe.png"
   },
   {
     id: "winston",
@@ -318,7 +318,7 @@ export const heroes: Hero[] = [
     weaponType: "Beam",
     mobility: "High",
     releaseYear: 2016,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltee8555099b79f3e3/638a6232d8e4d310ae11c5f6/winston-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/bd9c8e634d89488459dfc1aeb21b602fa5c39aa05601a4167682f3a3fed4e0ee.png"
   },
   {
     id: "wrecking-ball",
@@ -328,7 +328,7 @@ export const heroes: Hero[] = [
     weaponType: "Hitscan",
     mobility: "High",
     releaseYear: 2018,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/bltf52703bcf9014b6b/638a6232fa369c0bf93123cc/wrecking-ball-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/5c18e39ce567ee8a84078f775b9f76a2ba891de601c059a3d2b46b61ae4afb42.png"
   },
   {
     id: "zarya",
@@ -338,7 +338,7 @@ export const heroes: Hero[] = [
     weaponType: "Beam",
     mobility: "Medium",
     releaseYear: 2016,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt63ef8a6cbd180ee4/638a62324e86a810b3965ef0/zarya-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/8819ba85823136640d8eba2af6fd7b19d46b9ee8ab192a4e06f396d1e5231f7a.png"
   },
   {
     id: "zenyatta",
@@ -348,7 +348,7 @@ export const heroes: Hero[] = [
     weaponType: "Projectile",
     mobility: "Low",
     releaseYear: 2016,
-    image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt2477dcaf4ebd440c/blt26ab4a242bdf1a42/638a62326f21bb0afab75ace/zenyatta-02.png"
+    image: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/71cabc939c577581f66b952f9c70891db779251e8e70f29de3c7bf494edacfe4.png"
   }
 ];
 

@@ -36,7 +36,6 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
   const [guesses, setGuesses] = useState<Guess[]>([]);
   const [gameWon, setGameWon] = useState(false);
   const [lastReset, setLastReset] = useState(new Date());
-  const maxGuesses = 6;
 
   useEffect(() => {
     const savedState = localStorage.getItem('overwatchHeroGuessGame');
@@ -69,7 +68,7 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
       date: today,
       currentMode: currentMode
     });
-  }, []);
+  }, [currentMode]);
 
   useEffect(() => {
     if (targetHero) {
@@ -89,7 +88,8 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const addGuess = (hero: Hero) => {
-    if (gameWon || guesses.length >= maxGuesses) return;
+    // Only check if the game was already won
+    if (gameWon) return;
     
     const result = {
       name: hero.id === targetHero?.id,
@@ -117,8 +117,6 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
     setLastReset(new Date());
   };
 
-  const remainingGuesses = maxGuesses - guesses.length;
-
   return (
     <GameContext.Provider value={{
       currentMode,
@@ -128,7 +126,7 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
       addGuess,
       resetGame,
       gameWon,
-      remainingGuesses,
+      remainingGuesses: 0,
       lastReset
     }}>
       {children}
