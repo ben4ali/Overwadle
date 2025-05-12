@@ -7,7 +7,7 @@ interface GameStatsProps {
 }
 
 const GameStats = ({ showWinMessage = true, isAnimating = false }: GameStatsProps) => {
-  const { gameWon, targetHero } = useGame();
+  const { gameWon, targetHero, currentMode } = useGame();
   
   const now = new Date();
   const tomorrow = new Date(now);
@@ -23,16 +23,15 @@ const GameStats = ({ showWinMessage = true, isAnimating = false }: GameStatsProp
 
   useEffect(() => {
     let timeout: NodeJS.Timeout | undefined;
-    if (showWinMessage && !isAnimating && gameWon) {
-      // Add a small delay to ensure animation is finished
+    if (currentMode === 'classic') {
       timeout = setTimeout(() => setShowDelayedWinCard(true), 3100);
     } else {
-      setShowDelayedWinCard(false);
+      setShowDelayedWinCard(true);
     }
     return () => {
       if (timeout) clearTimeout(timeout);
     };
-  }, [showWinMessage, isAnimating, gameWon]);
+  }, [showWinMessage, isAnimating, gameWon, currentMode]);
 
   return (
     <div className="flex flex-col items-center justify-center mt-4 md:mt-6 p-3 md:p-4 border border-muted rounded-md bg-card/50">
