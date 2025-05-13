@@ -4,11 +4,14 @@
   <img src="./src/assets/images/overwatch-logo-white.png" alt="Overwadle Logo" width="100"/>
   <h3>The Overwatch Guessing Game</h3>
   <p>A daily Overwatch hero guessing game, inspired by Loldle</p>
+  <p><a href="https://overwadle.online" target="_blank">Play Overwadle Now!</a></p>
 </div>
 
 ## Overview
 
 Overwadle is a fan-made daily guessing game for Overwatch fans where you try to identify the secret hero. With three distinct game modes, each offering a different way to test your Overwatch knowledge, Overwadle brings a fresh challenge every day.
+
+**Play now at [https://overwadle.online](https://overwadle.online)**
 
 ## Previews
 
@@ -68,6 +71,10 @@ npm run dev
 ## Inspiration
 
 Overwadle is inspired by [Loldle](https://loldle.net/), a similar guessing game for League of Legends. This project adapts that concept to the Overwatch universe, bringing daily guessing challenges to Overwatch fans.
+
+## Ready to Play?
+
+Visit **[https://overwadle.online](https://overwadle.online)** to start playing now! A new hero challenge awaits you every day.
 
 ---
 
