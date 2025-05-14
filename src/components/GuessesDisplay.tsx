@@ -20,6 +20,12 @@ const GuessesDisplay : FC<GuessesDisplayProps> = ({
   const [showWinMessage, setShowWinMessage] = useState(false);
   const prevGuessesLengthRef = useRef(-1);
 
+  const lastGuessesLength = useRef(guesses.length);
+  const setGameWonRef = useRef(setGameWon);
+
+  useEffect(() => {
+    setGameWonRef.current = setGameWon;
+  }, [setGameWon]);
 
   const columns = [
     { key: 'hero', label: 'Hero' },
@@ -39,58 +45,67 @@ const GuessesDisplay : FC<GuessesDisplayProps> = ({
 
   useEffect(() => {
     if (justArrived) {
+      if (gameWon) {
+        setShowWinMessage(true);
+      }
       return;
     }
+
     if (prevGuessesLengthRef.current === -1) {
       prevGuessesLengthRef.current = guesses.length;
       return;
     }
 
     const currentGuessesLength = guesses.length;
+    if (currentGuessesLength <= lastGuessesLength.current) {
+      lastGuessesLength.current = currentGuessesLength;
+      return;
+    }
+    
+    lastGuessesLength.current = currentGuessesLength;
     prevGuessesLengthRef.current = currentGuessesLength;
    
-    if (currentGuessesLength > 0) {
-      const lastGuess = guesses[currentGuessesLength - 1];
-      const isCorrectGuess = lastGuess?.result.name === true;
-      
-      setIsAnimating(true);
-      setShowWinMessage(false);
-      window.dispatchEvent(new CustomEvent('guesses-animating', { detail: true }));
-      
-      const newestGuessRow = guessesContainerRef.current?.querySelector('.guess-0');
-      if (!newestGuessRow) {
-        console.error('Animation target not found');
-        setIsAnimating(false);
-        return;
-      }
-      
-      const cells = newestGuessRow.querySelectorAll('.result-cell');
-      gsap.set(cells, { opacity: 0, y: 10 });
-      
-      gsap.to(cells, {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        ease: "power2.out",
-        stagger: {
-          each: 0.5,
-          from: "start",
-          ease: "power1.in"
-        },
-        onComplete: () => {
-          setIsAnimating(false);
-          window.dispatchEvent(new CustomEvent('guesses-animating', { detail: false }));
-          
-          if (isCorrectGuess) {
-            setGameWon(true);
-            setShowWinMessage(true);
-          } else {
-            setShowWinMessage(false);
-          }
-        },
-      });
+    const lastGuess = guesses[currentGuessesLength - 1];
+    const isCorrectGuess = lastGuess?.result.name === true;
+    
+    setIsAnimating(true);
+    setShowWinMessage(false);
+    window.dispatchEvent(new CustomEvent('guesses-animating', { detail: true }));
+    
+    const newestGuessRow = guessesContainerRef.current?.querySelector('.guess-0');
+    if (!newestGuessRow) {
+      console.error('Animation target not found');
+      setIsAnimating(false);
+      return;
     }
-  }, [guesses]);
+    
+    const cells = newestGuessRow.querySelectorAll('.result-cell');
+    gsap.set(cells, { opacity: 0, y: 10 });
+    
+    gsap.to(cells, {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: "power2.out",
+      stagger: {
+        each: 0.5,
+        from: "start",
+        ease: "none"
+      },
+      onComplete: () => {
+        setIsAnimating(false);
+        window.dispatchEvent(new CustomEvent('guesses-animating', { detail: false }));
+        window.dispatchEvent(new CustomEvent('animation-complete', { detail: { isCorrectGuess } }));
+        
+        if (isCorrectGuess) {
+          setGameWonRef.current(true);
+          setShowWinMessage(true);
+        } else {
+          setShowWinMessage(false);
+        }
+      },
+    });
+  }, [guesses.length]);
 
   const getResultClass = (result: boolean | 'partial') => {
     if (result === true) return 'bg-green-600';

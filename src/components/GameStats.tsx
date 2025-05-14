@@ -20,18 +20,26 @@ const GameStats = ({ showWinMessage = true, isAnimating = false }: GameStatsProp
   const minutes = Math.floor((timeUntilReset % (1000 * 60 * 60)) / (1000 * 60));
   
   const [showDelayedWinCard, setShowDelayedWinCard] = useState(false);
-
+  
   useEffect(() => {
-    let timeout: NodeJS.Timeout | undefined;
-    if (currentMode === 'classic') {
-      timeout = setTimeout(() => setShowDelayedWinCard(true), 3100);
-    } else {
+    if (currentMode !== 'classic') {
       setShowDelayedWinCard(true);
+      return;
     }
-    return () => {
-      if (timeout) clearTimeout(timeout);
+    
+    const handleAnimationComplete = (e: CustomEvent) => {
+      const { isCorrectGuess } = e.detail;
+      if (isCorrectGuess) {
+        setShowDelayedWinCard(true);
+      }
     };
-  }, [showWinMessage, isAnimating, gameWon, currentMode]);
+    
+    window.addEventListener('animation-complete', handleAnimationComplete as EventListener);
+    
+    return () => {
+      window.removeEventListener('animation-complete', handleAnimationComplete as EventListener);
+    };
+  }, [currentMode]);
 
   return (
     <div className="flex flex-col items-center justify-center mt-4 md:mt-6 p-3 md:p-4 border border-muted rounded-md bg-card/50">
@@ -42,7 +50,6 @@ const GameStats = ({ showWinMessage = true, isAnimating = false }: GameStatsProp
         Next hero in: {hours}h {minutes}m
       </div>
       
-      {/* Only show win card after a short delay, after animation is finished */}
       {showDelayedWinCard && gameWon && targetHero && (
         <div className="mt-3 md:mt-4 p-3 md:p-4 rounded-md bg-card animate-fade-in">
           <p className="text-base md:text-lg font-semibold mb-2">

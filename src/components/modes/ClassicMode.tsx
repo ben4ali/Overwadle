@@ -6,8 +6,7 @@ import { gsap } from 'gsap';
 
 const ClassicMode = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [justArrived, setJustArrived] = useState(true);
-  useEffect(() => {
+  const [justArrived, setJustArrived] = useState(true);  useEffect(() => {
     if (justArrived){
       setTimeout(() => {
         setJustArrived(false);

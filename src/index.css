@@ -35,20 +35,14 @@
     --radius: 0.5rem;
   }
 
-  @font-face {
-    font-family: 'Overwatch';
-    src: url('./assets/OVERWATCH.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
+
 
   * {
     @apply border-border;
   }
 
   body {
-    font-family: 'Overwatch', Arial, Helvetica, sans-serif !important;
+    font-family: Arial, Helvetica, sans-serif !important;
     font-feature-settings: "rlig" 1, "calt" 1;
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
