@@ -5,7 +5,7 @@ const heroEmojis: Record<string, string[]> = {
   bastion: ['🤖', '🔫', '🐦', '🦾'],
   brigitte: ['🛡️', '🔧', '🦁', '🥪'],
   cassidy: ['🤠', '🔫', '🦅', '🌵'],
-  'dva': ['🐰', '🎮', '🤖', '💥'],
+  dva: ['🐰', '🎮', '🤖', '💥'],
   doomfist: ['👊', '🦾', '💥', '☄️'],
   echo: ['🤖', '🦋', '🔵', '🛸'],
   freja: ['🦅', '🛡️', '🏹', '🎯'],
@@ -42,6 +42,13 @@ const heroEmojis: Record<string, string[]> = {
   'wrecking-ball': ['🐹', '⚙️', '🔩', '🛞'],
   zarya: ['💪', '🔫', '🟣', '🏋️‍♀️'],
   zenyatta: ['🧘', '🔮', '🤲', '☯️'],
+  wuyang: ['💧', '🐉', '🌊', '🧘‍♀️'],
+  vendetta: ['🗡️', '🇮🇹', '🖤', '⚔️'],
+  anran: ['🔥', '🐉', '🇨🇳', '🌪️'],
+  domina: ['💎', '✨', '🔦', '👑'],
+  emre: ['🤖', '🔫', '💾', '⚡'],
+  mizuki: ['🎩', '🧘', '🌀', '🔒'],
+  'jetpack-cat': ['🐱', '✈️', '⚡', '🌈'],
 };
 
 export function getDailyEmojisByHeroId(heroId: string): string[] {

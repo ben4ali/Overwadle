@@ -1,4 +1,3 @@
-
 export type HeroQuote = {
   id: string; // Hero ID
   quotes: string[]; // Array of quotes for the hero
@@ -6,392 +5,445 @@ export type HeroQuote = {
 
 export const heroQuotes: HeroQuote[] = [
   {
-    id: "ana",
+    id: 'ana',
     quotes: [
-      "Everyone must find their purpose.",
-      "Children, behave.",
-      "Witness me.",
-      "Mother knows best."
-    ]
+      'Everyone must find their purpose.',
+      'Children, behave.',
+      'Witness me.',
+      'Mother knows best.',
+    ],
   },
   {
-    id: "ashe",
+    id: 'ashe',
     quotes: [
-      "My business, my rules.",
-      "Bob! Do something!",
+      'My business, my rules.',
+      'Bob! Do something!',
       "Hang tight, I'm coming.",
-      "I'm not one to be crossed."
-    ]
+      "I'm not one to be crossed.",
+    ],
   },
   {
-    id: "baptiste",
+    id: 'baptiste',
     quotes: [
       "Thank you, Baptiste! Oh, you're welcome!",
       "That's what I'm here for.",
-      "I recommend not dying.",
-      "I'm not going to let you down."
-    ]
+      'I recommend not dying.',
+      "I'm not going to let you down.",
+    ],
   },
   {
-    id: "bastion",
+    id: 'bastion',
     quotes: [
-      "*Cheerful beeping*",
-      "*Curious whirring*",
-      "*Alarmed beeping*",
-      "*Happy chirping*"
-    ]
+      '*Cheerful beeping*',
+      '*Curious whirring*',
+      '*Alarmed beeping*',
+      '*Happy chirping*',
+    ],
   },
   {
-    id: "brigitte",
+    id: 'brigitte',
     quotes: [
-      "Rally to me!",
+      'Rally to me!',
       "I'll be your shield!",
-      "Mace to the face!",
-      "I'm with you."
-    ]
+      'Mace to the face!',
+      "I'm with you.",
+    ],
   },
   {
-    id: "cassidy",
+    id: 'cassidy',
     quotes: [
       "It's high noon.",
       "I'm your huckleberry.",
       "Justice ain't gonna dispense itself.",
-      "I've got work to do."
-    ]
+      "I've got work to do.",
+    ],
   },
   {
-    id: "dva",
-    quotes: [
-      "Nerf this!",
-      "Love, D.Va!",
-      "GG!",
-      "Time to raise my APM!"
-    ]
+    id: 'dva',
+    quotes: ['Nerf this!', 'Love, D.Va!', 'GG!', 'Time to raise my APM!'],
   },
   {
-    id: "doomfist",
+    id: 'doomfist',
     quotes: [
-      "Only through conflict do we evolve.",
-      "They say chivalry is dead.",
-      "Meteor Strike!",
-      "Hand over the gauntlet."
-    ]
+      'Only through conflict do we evolve.',
+      'They say chivalry is dead.',
+      'Meteor Strike!',
+      'Hand over the gauntlet.',
+    ],
   },
   {
-    id: "echo",
+    id: 'echo',
     quotes: [
-      "Adapting to new situations.",
-      "Flight systems online.",
-      "Learning and adapting.",
-      "Following your lead."
-    ]
+      'Adapting to new situations.',
+      'Flight systems online.',
+      'Learning and adapting.',
+      'Following your lead.',
+    ],
   },
   {
-    id: "freja",
+    id: 'freja',
     quotes: [
-      "I will be your shield!",
-      "Let me take you under my wing.",
+      'I will be your shield!',
+      'Let me take you under my wing.',
       "I'll protect what's mine.",
-      "For honor and glory!"
-    ]
+      'For honor and glory!',
+    ],
   },
   {
-    id: "genji",
+    id: 'genji',
     quotes: [
-      "Ryūjin no ken wo kurae!",
-      "Mada mada.",
-      "A steady blade balances the soul.",
-      "The dragon becomes me!"
-    ]
+      'Ryūjin no ken wo kurae!',
+      'Mada mada.',
+      'A steady blade balances the soul.',
+      'The dragon becomes me!',
+    ],
   },
   {
-    id: "hanzo",
+    id: 'hanzo',
     quotes: [
-      "Ryū ga waga teki wo kurau!",
-      "Simple geometry.",
+      'Ryū ga waga teki wo kurau!',
+      'Simple geometry.',
       "I choose the dragon's path.",
-      "Honor resides in one's actions."
-    ]
+      "Honor resides in one's actions.",
+    ],
   },
   {
-    id: "hazard",
+    id: 'hazard',
     quotes: [
-      "Signal intercepted.",
+      'Signal intercepted.',
       "I've got your frequency.",
       "Let's cause some havoc!",
-      "Watch your step."
-    ]
+      'Watch your step.',
+    ],
   },
   {
-    id: "illari",
+    id: 'illari',
     quotes: [
-      "The sun shines on all equally.",
-      "Feel the warmth of the sun.",
-      "Light overcomes darkness.",
-      "I can see your path."
-    ]
+      'The sun shines on all equally.',
+      'Feel the warmth of the sun.',
+      'Light overcomes darkness.',
+      'I can see your path.',
+    ],
   },
   {
-    id: "junker-queen",
+    id: 'junker-queen',
     quotes: [
-      "Bow to your queen!",
-      "Long live the Queen!",
-      "Strength and honor!",
-      "Welcome to the apocalypse."
-    ]
+      'Bow to your queen!',
+      'Long live the Queen!',
+      'Strength and honor!',
+      'Welcome to the apocalypse.',
+    ],
   },
   {
-    id: "junkrat",
+    id: 'junkrat',
     quotes: [
-      "Fire in the hole!",
+      'Fire in the hole!',
       "It's a perfect day for some mayhem.",
-      "Brrring!", 
-      "Tick tock tick tock tick tock!"
-    ]
+      'Brrring!',
+      'Tick tock tick tock tick tock!',
+    ],
   },
   {
-    id: "juno",
+    id: 'juno',
     quotes: [
-      "Let me pull some strings for you.",
+      'Let me pull some strings for you.',
       "I'm here to help.",
       "What's the emergency?",
-      "Trust me, I got this."
-    ]
+      'Trust me, I got this.',
+    ],
   },
   {
-    id: "kiriko",
+    id: 'kiriko',
     quotes: [
-      "Protection through destruction.",
+      'Protection through destruction.',
       "I'll look after you.",
-      "Let the kitsune guide you.",
-      "Swift as the wind!"
-    ]
+      'Let the kitsune guide you.',
+      'Swift as the wind!',
+    ],
   },
   {
-    id: "lifeweaver",
+    id: 'lifeweaver',
     quotes: [
-      "Life is precious.",
-      "Beauty blooms in adversity.",
-      "Every petal has its purpose.",
-      "I'll mend your wounds."
-    ]
+      'Life is precious.',
+      'Beauty blooms in adversity.',
+      'Every petal has its purpose.',
+      "I'll mend your wounds.",
+    ],
   },
   {
-    id: "lucio",
+    id: 'lucio',
     quotes: [
-      "Audio medic!",
+      'Audio medic!',
       "Let's break it down!",
-      "Speed boost!",
-      "Oh, let's break it DOWN!"
-    ]
+      'Speed boost!',
+      "Oh, let's break it DOWN!",
+    ],
   },
   {
-    id: "mauga",
+    id: 'mauga',
     quotes: [
-      "Time to rage!",
+      'Time to rage!',
       "You're in my territory now.",
       "Is that all you've got?",
-      "Feel the burn!"
-    ]
+      'Feel the burn!',
+    ],
   },
   {
-    id: "mei",
+    id: 'mei',
     quotes: [
-      "A-Mei-zing!",
+      'A-Mei-zing!',
       "Sorry! Sorry, I'm sorry. Sorry.",
       "Freeze! Don't move!",
-      "Our world is worth fighting for."
-    ]
+      'Our world is worth fighting for.',
+    ],
   },
   {
-    id: "mercy",
+    id: 'mercy',
     quotes: [
-      "Heroes never die!",
+      'Heroes never die!',
       "I'll be watching over you.",
       "Sometimes I'm not sure why I even bother.",
-      "Need a second opinion?"
-    ]
+      'Need a second opinion?',
+    ],
   },
   {
-    id: "moira",
+    id: 'moira',
     quotes: [
-      "Science will reveal the truth.",
-      "What an interesting hypothesis.",
+      'Science will reveal the truth.',
+      'What an interesting hypothesis.',
       "I'm working to create a better world.",
-      "Brilliant."
-    ]
+      'Brilliant.',
+    ],
   },
   {
-    id: "orisa",
+    id: 'orisa',
     quotes: [
-      "Cease your resistance!",
-      "Your safety is my primary concern.",
-      "Error 404: Sarcasm module not found.",
-      "Do you need a hug?"
-    ]
+      'Cease your resistance!',
+      'Your safety is my primary concern.',
+      'Error 404: Sarcasm module not found.',
+      'Do you need a hug?',
+    ],
   },
   {
-    id: "pharah",
+    id: 'pharah',
     quotes: [
-      "Justice rains from above!",
-      "Rocket jump? That sounds dangerous.",
-      "I am the guardian of the skies.",
-      "Security in my hands."
-    ]
+      'Justice rains from above!',
+      'Rocket jump? That sounds dangerous.',
+      'I am the guardian of the skies.',
+      'Security in my hands.',
+    ],
   },
   {
-    id: "ramattra",
+    id: 'ramattra',
     quotes: [
-      "Together we rise!",
-      "Annihilation is salvation.",
-      "Your suffering will end.",
-      "Humanity is lost."
-    ]
+      'Together we rise!',
+      'Annihilation is salvation.',
+      'Your suffering will end.',
+      'Humanity is lost.',
+    ],
   },
   {
-    id: "reaper",
+    id: 'reaper',
     quotes: [
-      "Die, die, die!",
-      "Death walks among you.",
-      "From the shadows...",
-      "I'm back in black."
-    ]
+      'Die, die, die!',
+      'Death walks among you.',
+      'From the shadows...',
+      "I'm back in black.",
+    ],
   },
   {
-    id: "reinhardt",
+    id: 'reinhardt',
     quotes: [
-      "Hammer down!",
-      "Bring me another!",
-      "Honor! Justice! Reinhardt, Reinhardt, Reinhardt!",
-      "Catch phrase!"
-    ]
+      'Hammer down!',
+      'Bring me another!',
+      'Honor! Justice! Reinhardt, Reinhardt, Reinhardt!',
+      'Catch phrase!',
+    ],
   },
   {
-    id: "roadhog",
+    id: 'roadhog',
     quotes: [
       "Say 'bacon' one more time...",
-      "Violence is usually the answer.",
-      "Hook, line, and sinker.",
-      "I'm a one-man apocalypse."
-    ]
+      'Violence is usually the answer.',
+      'Hook, line, and sinker.',
+      "I'm a one-man apocalypse.",
+    ],
   },
   {
-    id: "sigma",
+    id: 'sigma',
     quotes: [
-      "What is that melody?",
-      "There is no obligation for the universe to make sense to you.",
-      "Gravity is a harness.",
-      "Hold it together..."
-    ]
+      'What is that melody?',
+      'There is no obligation for the universe to make sense to you.',
+      'Gravity is a harness.',
+      'Hold it together...',
+    ],
   },
   {
-    id: "sojourn",
+    id: 'sojourn',
     quotes: [
       "I've got you in my sights.",
-      "Stay focused on the mission.",
+      'Stay focused on the mission.',
       "Team up, we've got this.",
-      "Victory is in our grasp."
-    ]
+      'Victory is in our grasp.',
+    ],
   },
   {
-    id: "soldier-76",
+    id: 'soldier-76',
     quotes: [
       "I've got you in my sights.",
       "We're all soldiers now.",
-      "Young punks... Get off my lawn!",
-      "The fight isn't over."
-    ]
+      'Young punks... Get off my lawn!',
+      "The fight isn't over.",
+    ],
   },
   {
-    id: "sombra",
+    id: 'sombra',
     quotes: [
-      "Been here all along.",
-      "Boop!",
-      "Everything can be hacked... and everyone.",
-      "Looking for me?"
-    ]
+      'Been here all along.',
+      'Boop!',
+      'Everything can be hacked... and everyone.',
+      'Looking for me?',
+    ],
   },
   {
-    id: "symmetra",
+    id: 'symmetra',
     quotes: [
-      "The true enemy of humanity is disorder.",
-      "Perfect harmony.",
-      "Welcome to my reality.",
-      "The path to enlightenment is through order."
-    ]
+      'The true enemy of humanity is disorder.',
+      'Perfect harmony.',
+      'Welcome to my reality.',
+      'The path to enlightenment is through order.',
+    ],
   },
   {
-    id: "torbjorn",
+    id: 'torbjorn',
     quotes: [
-      "Molten core!",
+      'Molten core!',
       "Build 'em up, break 'em down.",
-      "My turret!",
-      "Too hot for you?"
-    ]
+      'My turret!',
+      'Too hot for you?',
+    ],
   },
   {
-    id: "tracer",
+    id: 'tracer',
     quotes: [
       "Cheers love, the cavalry's here!",
-      "Ever get that feeling of déjà vu?",
+      'Ever get that feeling of déjà vu?',
       "Time's up!",
-      "The world could always use more heroes."
-    ]
+      'The world could always use more heroes.',
+    ],
   },
   {
-    id: "venture",
+    id: 'venture',
     quotes: [
-      "Adventure awaits!",
-      "Exploring new horizons.",
-      "Follow my lead.",
-      "The journey has just begun."
-    ]
+      'Adventure awaits!',
+      'Exploring new horizons.',
+      'Follow my lead.',
+      'The journey has just begun.',
+    ],
   },
   {
-    id: "widowmaker",
+    id: 'widowmaker',
     quotes: [
-      "One shot, one kill.",
-      "No one can hide from my sight.",
-      "Step into my parlor...",
-      "What's an aimbot?"
-    ]
+      'One shot, one kill.',
+      'No one can hide from my sight.',
+      'Step into my parlor...',
+      "What's an aimbot?",
+    ],
   },
   {
-    id: "winston",
+    id: 'winston',
     quotes: [
-      "How embarrassing!",
-      "Did someone say peanut butter?",
-      "Imagination is the essence of discovery.",
-      "No monkey business."
-    ]
+      'How embarrassing!',
+      'Did someone say peanut butter?',
+      'Imagination is the essence of discovery.',
+      'No monkey business.',
+    ],
   },
   {
-    id: "wrecking-ball",
+    id: 'wrecking-ball',
     quotes: [
-      "*Happy squeaking*",
-      "Rolling out!",
-      "*Determined squeaking*",
-      "*Excited chirping*"
-    ]
+      '*Happy squeaking*',
+      'Rolling out!',
+      '*Determined squeaking*',
+      '*Excited chirping*',
+    ],
   },
   {
-    id: "zarya",
+    id: 'zarya',
     quotes: [
-      "Together we are strong.",
-      "I want to hug you like big, fuzzy Siberian bear!",
-      "In Russia, game plays you.",
-      "Strong as the mountain."
-    ]
+      'Together we are strong.',
+      'I want to hug you like big, fuzzy Siberian bear!',
+      'In Russia, game plays you.',
+      'Strong as the mountain.',
+    ],
   },
   {
-    id: "zenyatta",
+    id: 'zenyatta',
     quotes: [
-      "Experience tranquility.",
-      "Pass into the Iris.",
-      "Life is more than a series of ones and zeroes.",
-      "Peace be upon you."
-    ]
-  }
+      'Experience tranquility.',
+      'Pass into the Iris.',
+      'Life is more than a series of ones and zeroes.',
+      'Peace be upon you.',
+    ],
+  },
+  {
+    id: 'wuyang',
+    quotes: [
+      "Let's clean off those wounds.",
+      'Try to keep up!',
+      'Hope you brought a change of clothes!',
+      'As Anran would say, I still have a ways to go.',
+    ],
+  },
+  {
+    id: 'vendetta',
+    quotes: [
+      '	I am the empire.',
+      'Let the conquest begin.',
+      'Victory is a choice. Make it.',
+      'Arriva la punizione!',
+    ],
+  },
+  {
+    id: 'anran',
+    quotes: [
+      "I'll get up no matter how many times they knock me down.",
+      "We're not going down without a fight.",
+      'Setbacks are just part of the process.',
+      'Scorch the sky!',
+    ],
+  },
+  {
+    id: 'domina',
+    quotes: [
+      'Shaping our defense.',
+      "I'll accept nothing less than your best performance out there.",
+      'Consider this your last chance to impress me.',
+      'Serve my design!',
+    ],
+  },
+  {
+    id: 'emre',
+    quotes: [
+      'Time for plan B.',
+      "I'll adapt-I always do.",
+      'Augh... losing myself...',
+      'What... What happened...?',
+    ],
+  },
+  {
+    id: 'mizuki',
+    quotes: [
+      "What can I say? I'm a team player.",
+      "You can't break free!",
+      'Changed my mind.',
+      "This curse... it won't let me go.",
+    ],
+  },
+  {
+    id: 'jetpack-cat',
+    quotes: ['Meeeow!', 'Meeeeeooooowww!!!', 'Meeowe?', 'Mew!'],
+  },
 ];
 
 export const getQuotesByHeroId = (id: string): string[] => {
@@ -401,19 +453,22 @@ export const getQuotesByHeroId = (id: string): string[] => {
 
 export const getRandomQuoteByHeroId = (id: string): string => {
   const quotes = getQuotesByHeroId(id);
-  if (quotes.length === 0) return "No quotes available";
-  
+  if (quotes.length === 0) return 'No quotes available';
+
   return quotes[Math.floor(Math.random() * quotes.length)];
 };
 
 export const getDailyQuoteByHeroId = (id: string): string => {
   const quotes = getQuotesByHeroId(id);
-  if (quotes.length === 0) return "No quotes available";
-  
+  if (quotes.length === 0) return 'No quotes available';
+
   // Use the date to deterministically select a quote
   const today = new Date();
-  const seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+  const seed =
+    today.getFullYear() * 10000 +
+    (today.getMonth() + 1) * 100 +
+    today.getDate();
   const index = seed % quotes.length;
-  
+
   return quotes[index];
 };
