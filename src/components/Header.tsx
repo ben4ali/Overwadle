@@ -55,7 +55,7 @@ const Header = () => {
               />
             </h1>
             <span className="absolute bottom-0 right-[0.5rem]  bg-red-600 text-white text-[12px] md:text-[10px] font-black uppercase tracking-widest px-2.5 py-1 shadow-[2px_2px_0px_rgba(0,0,0,0.3)] pointer-events-none">
-              Talon update 02.2026
+              Talon update 2026
             </span>
           </div>
           <p className="text-base md:text-lg text-muted-foreground px-4 text-center">

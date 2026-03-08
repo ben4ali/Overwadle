@@ -48,7 +48,7 @@ function generateRounds(): Round[] {
 }
 
 export default function CountryMode() {
-  const [rounds] = useState<Round[]>(generateRounds);
+  const [rounds, setRounds] = useState<Round[]>(generateRounds);
   const [currentRound, setCurrentRound] = useState(0);
   const [selected, setSelected] = useState<string | null>(null);
   const [score, setScore] = useState(0);
@@ -98,7 +98,11 @@ export default function CountryMode() {
   }
 
   function handleRestart() {
-    window.location.reload();
+    setRounds(generateRounds());
+    setCurrentRound(0);
+    setSelected(null);
+    setScore(0);
+    setDone(false);
   }
 
   if (done) {
