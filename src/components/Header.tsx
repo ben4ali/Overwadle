@@ -8,6 +8,7 @@ const Header = () => {
     { id: 'classic', name: 'Classic' },
     { id: 'quote', name: 'Quotes' },
     { id: 'emoji', name: 'Emoji' },
+    { id: 'country', name: 'Country', isNew: true },
   ];
 
   return (
@@ -40,7 +41,7 @@ const Header = () => {
       </a>
       <div className="container mx-auto">
         <div className="flex flex-col items-center justify-center space-y-2 md:space-y-4">
-          <div className="relative inline-flex">
+          <div className="relative inline-flex pb-5">
             <h1 className="text-3xl md:text-4xl font-bold text-ow-light-orange flex flex-col md:flex-row items-center gap-1 md:gap-2">
               <img
                 src={overatchLogo}
@@ -53,8 +54,8 @@ const Header = () => {
                 className="h-[3rem] md:h-[5rem]"
               />
             </h1>
-            <span className="absolute top-2 -right-5 md:-right-4 rotate-[14deg] bg-red-600 text-white text-[9px] md:text-[10px] font-black uppercase tracking-widest px-2.5 py-1 shadow-[2px_2px_0px_rgba(0,0,0,0.3)] pointer-events-none">
-              Talon update
+            <span className="absolute bottom-0 right-[0.5rem]  bg-red-600 text-white text-[12px] md:text-[10px] font-black uppercase tracking-widest px-2.5 py-1 shadow-[2px_2px_0px_rgba(0,0,0,0.3)] pointer-events-none">
+              Talon update 02.2026
             </span>
           </div>
           <p className="text-base md:text-lg text-muted-foreground px-4 text-center">
@@ -63,21 +64,29 @@ const Header = () => {
 
           <div className="flex space-x-2 mt-2 md:mt-4">
             {modes.map(mode => (
-              <button
-                key={mode.id}
-                className={`px-3 md:px-5 py-1 md:py-2 text-sm md:text-base font-bold uppercase tracking-wide shadow-md transition-colors duration-150
-                  ${
-                    currentMode === mode.id
-                      ? 'bg-ow-orange text-white hover:bg-light-ow-orange'
-                      : 'bg-white border-ow-blue text-ow-blue hover:bg-ow-blue hover:text-white'
+              <div key={mode.id} className="relative">
+                <button
+                  className={`px-3 md:px-5 py-1 md:py-2 text-sm md:text-base font-bold uppercase tracking-wide shadow-md transition-colors duration-150
+                    ${
+                      currentMode === mode.id
+                        ? 'bg-ow-orange text-white hover:bg-light-ow-orange'
+                        : 'bg-white border-ow-blue text-ow-blue hover:bg-ow-blue hover:text-white'
+                    }
+                  `}
+                  onClick={() =>
+                    setCurrentMode(
+                      mode.id as 'classic' | 'quote' | 'emoji' | 'country',
+                    )
                   }
-                `}
-                onClick={() =>
-                  setCurrentMode(mode.id as 'classic' | 'quote' | 'emoji')
-                }
-              >
-                {mode.name}
-              </button>
+                >
+                  {mode.name}
+                </button>
+                {mode.isNew && (
+                  <span className="absolute -top-2.5 -right-5 rotate-[18deg] bg-orange-600 text-white text-[15px] font-black uppercase tracking-wider px-1.5 py-0.5 shadow-[1px_1px_0px_rgba(0,0,0,0.4)] pointer-events-none leading-none">
+                    new
+                  </span>
+                )}
+              </div>
             ))}
           </div>
         </div>

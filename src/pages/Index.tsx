@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import overwatchBG from '../assets/images/talon_bg.png';
 import Header from '../components/Header';
 import ClassicMode from '../components/modes/ClassicMode';
+import CountryMode from '../components/modes/CountryMode';
 import EmojiMode from '../components/modes/EmojiMode';
 import QuotesMode from '../components/modes/QuotesMode';
 import { GameProvider, useGame } from '../contexts/GameContext';
@@ -16,6 +17,8 @@ const GameContent = () => {
         return <QuotesMode />;
       case 'emoji':
         return <EmojiMode />;
+      case 'country':
+        return <CountryMode />;
       default:
         return <ClassicMode />;
     }
