@@ -81,3 +81,4 @@ Visit **[https://overwadle.online](https://overwadle.online)** to start playing 
 Created for fun by [Ali Benkarrouch](https://github.com/ben4ali)
 
 > **Note:** This game is fan-made and not affiliated with Blizzard Entertainment.
+> ** Made for educational purposes **
