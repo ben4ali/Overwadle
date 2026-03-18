@@ -17,27 +17,11 @@ const Header = () => {
         href="https://buymeacoffee.com/ben4ali"
         target="_blank"
         rel="noopener noreferrer"
-        className="group fixed bottom-6 right-6 z-50 flex items-center gap-3 pl-2 pr-5 py-2 rounded-2xl bg-white border border-gray-200 text-gray-900 shadow-[0_4px_16px_rgba(0,0,0,0.12)] transition-all duration-300 hover:bg-[#FFDD00] hover:border-[#FFDD00] hover:shadow-[0_6px_24px_rgba(255,221,0,0.4)] hover:-translate-y-0.5"
+        className="fixed bottom-3 right-3 z-50 px-3 py-1.5 rounded-md underline text-neutral-400 shadow-sm  transition-all duration-200 hover:text-neutral-300"
       >
-        <div className="w-10 h-10 rounded-xl bg-[#FFDD00] group-hover:bg-white flex items-center justify-center transition-colors duration-300 flex-shrink-0">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            className="fill-black group-hover:fill-[#FFDD00] transition-colors duration-300"
-          >
-            <path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4z" />
-          </svg>
-        </div>
-        <div className="flex flex-col leading-tight">
-          <span className="text-[10px] font-semibold text-gray-400 group-hover:text-gray-600 uppercase tracking-widest transition-colors duration-200">
-            Support me
-          </span>
-          <span className="text-sm font-extrabold text-gray-900">
-            Buy me a coffee
-          </span>
-        </div>
+        <span className="text-[10px] font-bold  uppercase tracking-wider">
+          Buy me a coffee
+        </span>
       </a>
       <div className="container mx-auto">
         <div className="flex flex-col items-center justify-center space-y-2 md:space-y-4">
