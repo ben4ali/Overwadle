@@ -1,19 +1,17 @@
-import { useEffect, useRef, useState, FC } from 'react';
-import { ArrowDownIcon, ArrowUpIcon } from 'lucide-react';
-import { useGame } from '../contexts/GameContext';
 import { gsap } from 'gsap';
+import { ArrowDownIcon, ArrowUpIcon } from 'lucide-react';
+import { FC, useEffect, useRef, useState } from 'react';
+import { useGame } from '../contexts/GameContext';
 
-import tankIcon from '../assets/images/Tank.svg';
 import damageIcon from '../assets/images/Damage.svg';
 import supportIcon from '../assets/images/Support.svg';
+import tankIcon from '../assets/images/Tank.svg';
 
 interface GuessesDisplayProps {
   justArrived?: boolean;
 }
 
-const GuessesDisplay : FC<GuessesDisplayProps> = ({
-  justArrived = true,
-}) => {
+const GuessesDisplay: FC<GuessesDisplayProps> = ({ justArrived = true }) => {
   const { guesses, gameWon, targetHero, setGameWon } = useGame();
   const guessesContainerRef = useRef<HTMLDivElement>(null);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -61,42 +59,49 @@ const GuessesDisplay : FC<GuessesDisplayProps> = ({
       lastGuessesLength.current = currentGuessesLength;
       return;
     }
-    
+
     lastGuessesLength.current = currentGuessesLength;
     prevGuessesLengthRef.current = currentGuessesLength;
-   
+
     const lastGuess = guesses[currentGuessesLength - 1];
     const isCorrectGuess = lastGuess?.result.name === true;
-    
+
     setIsAnimating(true);
     setShowWinMessage(false);
-    window.dispatchEvent(new CustomEvent('guesses-animating', { detail: true }));
-    
-    const newestGuessRow = guessesContainerRef.current?.querySelector('.guess-0');
+    window.dispatchEvent(
+      new CustomEvent('guesses-animating', { detail: true }),
+    );
+
+    const newestGuessRow =
+      guessesContainerRef.current?.querySelector('.guess-0');
     if (!newestGuessRow) {
       console.error('Animation target not found');
       setIsAnimating(false);
       return;
     }
-    
+
     const cells = newestGuessRow.querySelectorAll('.result-cell');
     gsap.set(cells, { opacity: 0, y: 10 });
-    
+
     gsap.to(cells, {
       opacity: 1,
       y: 0,
       duration: 0.5,
-      ease: "power2.out",
+      ease: 'power2.out',
       stagger: {
         each: 0.5,
-        from: "start",
-        ease: "none"
+        from: 'start',
+        ease: 'none',
       },
       onComplete: () => {
         setIsAnimating(false);
-        window.dispatchEvent(new CustomEvent('guesses-animating', { detail: false }));
-        window.dispatchEvent(new CustomEvent('animation-complete', { detail: { isCorrectGuess } }));
-        
+        window.dispatchEvent(
+          new CustomEvent('guesses-animating', { detail: false }),
+        );
+        window.dispatchEvent(
+          new CustomEvent('animation-complete', { detail: { isCorrectGuess } }),
+        );
+
         if (isCorrectGuess) {
           setGameWonRef.current(true);
           setShowWinMessage(true);
@@ -105,7 +110,7 @@ const GuessesDisplay : FC<GuessesDisplayProps> = ({
         }
       },
     });
-  }, [guesses.length]);
+  }, [guesses, gameWon, justArrived]);
 
   const getResultClass = (result: boolean | 'partial') => {
     if (result === true) return 'bg-green-600';
@@ -117,14 +122,16 @@ const GuessesDisplay : FC<GuessesDisplayProps> = ({
     <div className="w-full overflow-x-auto pb-4">
       {showWinMessage && !isAnimating && (
         <div className="text-center my-6 animate-fade-in">
-          <span className="text-3xl font-bold text-green-400 animate-bounce mb-3">🎉 You won!</span>
+          <span className="text-3xl font-bold text-green-400 animate-bounce mb-3">
+            🎉 You won!
+          </span>
         </div>
       )}
-      
+
       <div className="grid grid-cols-6 gap-1 md:gap-5 mb-2 items-center justify-between w-full max-w-4xl mx-auto min-w-[600px]">
-        {columns.map((column) => (
-          <div 
-            key={column.key} 
+        {columns.map(column => (
+          <div
+            key={column.key}
             className="font-semibold text-center w-full bg-[#1c1c34] text-white h-[3rem] flex items-center justify-center text-xs md:text-base px-1"
           >
             {column.label.toUpperCase()}
@@ -132,10 +139,13 @@ const GuessesDisplay : FC<GuessesDisplayProps> = ({
         ))}
       </div>
 
-      <div className="space-y-2 w-full max-w-4xl mx-auto min-w-[600px]" ref={guessesContainerRef}>
+      <div
+        className="space-y-2 w-full max-w-4xl mx-auto min-w-[600px]"
+        ref={guessesContainerRef}
+      >
         {[...guesses].reverse().map((guess, index) => (
-          <div 
-            key={guesses.length - 1 - index} 
+          <div
+            key={guesses.length - 1 - index}
             className={`grid grid-cols-6 gap-1 md:gap-5 guess-${index} w-full`}
           >
             <div className="result-cell md:h-[8.2rem] h-[6rem]">
@@ -147,24 +157,55 @@ const GuessesDisplay : FC<GuessesDisplayProps> = ({
                 />
               </div>
             </div>
-            <div className={`result-cell h-[6rem] md:h-[8.2rem] ${getResultClass(!!guess.result.role)} text-white`}>
+            <div
+              className={`result-cell h-[6rem] md:h-[8.2rem] ${getResultClass(!!guess.result.role)} text-white`}
+            >
               <span className={`text-white text-xs md:text-base`}>
-                {guess.hero.role === 'Tank' && <img src={tankIcon} alt="Tank" className="inline w-3 h-3 md:w-4 md:h-4 mr-1" style={{'filter':'invert(1)'}} />}
-                {guess.hero.role === 'Damage' && <img src={damageIcon} alt="Damage" className="inline w-3 h-3 md:w-4 md:h-4 mr-1" style={{'filter':'invert(1)'}} />}
-                {guess.hero.role === 'Support' && <img src={supportIcon} alt="Support" className="inline w-3 h-3 md:w-4 md:h-4 mr-1" style={{'filter':'invert(1)'}} />}
+                {guess.hero.role === 'Tank' && (
+                  <img
+                    src={tankIcon}
+                    alt="Tank"
+                    className="inline w-3 h-3 md:w-4 md:h-4 mr-1"
+                    style={{ filter: 'invert(1)' }}
+                  />
+                )}
+                {guess.hero.role === 'Damage' && (
+                  <img
+                    src={damageIcon}
+                    alt="Damage"
+                    className="inline w-3 h-3 md:w-4 md:h-4 mr-1"
+                    style={{ filter: 'invert(1)' }}
+                  />
+                )}
+                {guess.hero.role === 'Support' && (
+                  <img
+                    src={supportIcon}
+                    alt="Support"
+                    className="inline w-3 h-3 md:w-4 md:h-4 mr-1"
+                    style={{ filter: 'invert(1)' }}
+                  />
+                )}
                 {guess.hero.role}
               </span>
             </div>
-            <div className={`result-cell h-[6rem] md:h-[8.2rem] ${getResultClass(!!guess.result.affiliation)} text-white text-xs md:text-base px-1`}>
+            <div
+              className={`result-cell h-[6rem] md:h-[8.2rem] ${getResultClass(!!guess.result.affiliation)} text-white text-xs md:text-base px-1`}
+            >
               {guess.hero.affiliation}
             </div>
-            <div className={`result-cell h-[6rem] md:h-[8.2rem] ${getResultClass(!!guess.result.weaponType)} text-white text-xs md:text-base`}>
+            <div
+              className={`result-cell h-[6rem] md:h-[8.2rem] ${getResultClass(!!guess.result.weaponType)} text-white text-xs md:text-base`}
+            >
               {guess.hero.weaponType}
             </div>
-            <div className={`result-cell h-[6rem] md:h-[8.2rem] ${getResultClass(!!guess.result.mobility)} text-white text-xs md:text-base`}>
+            <div
+              className={`result-cell h-[6rem] md:h-[8.2rem] ${getResultClass(!!guess.result.mobility)} text-white text-xs md:text-base`}
+            >
               {guess.hero.mobility}
             </div>
-            <div className={`result-cell h-[6rem] md:h-[8.2rem] ${getResultClass(!!guess.result.releaseYear)} text-white text-xs md:text-base`}>
+            <div
+              className={`result-cell h-[6rem] md:h-[8.2rem] ${getResultClass(!!guess.result.releaseYear)} text-white text-xs md:text-base`}
+            >
               <div className="flex items-center justify-center gap-1 md:gap-2">
                 {guess.hero.releaseYear}
                 {!guess.result.releaseYear && targetHero && (

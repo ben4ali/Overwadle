@@ -162,6 +162,7 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
       date: today,
       currentMode: initialCurrentMode,
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
